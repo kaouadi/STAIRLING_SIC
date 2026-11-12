@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="630" viewBox="0 0 1000 630">
+<defs><marker id="a6B7280" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6B7280"/></marker><marker id="a1F4E79" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1F4E79"/></marker><marker id="aB45309" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#B45309"/></marker></defs>
+<rect width="1000" height="630" fill="#FFFFFF"/>
+<text x="20" y="34" font-family="DejaVu Sans" font-size="16" fill="#4B5563" font-weight="bold" text-anchor="start">DOCUMENT D’ÉCHANGE</text>
+<text x="240" y="34" font-family="DejaVu Sans" font-size="14" fill="#4B5563" font-weight="normal" text-anchor="start">(un fichier JSON)</text>
+<rect x="20" y="50" width="420" height="380" rx="8" fill="#FFFFFF" stroke="#6B7280" stroke-width="1.6"/>
+<rect x="36" y="66" width="388" height="64" rx="8" fill="#FFF4E5" stroke="#B45309" stroke-width="1.6"/>
+<text x="50" y="88" font-family="DejaVu Sans" font-size="14" fill="#B45309" font-weight="bold" text-anchor="start">En-tête</text>
+<text x="50" y="108" font-family="DejaVu Sans" font-size="12" fill="#4B5563" font-weight="normal" text-anchor="start">format, format_version, document_id,</text>
+<text x="50" y="124" font-family="DejaVu Sans" font-size="12" fill="#4B5563" font-weight="normal" text-anchor="start">numeric_encoding</text>
+<rect x="36" y="138" width="388" height="64" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<text x="50" y="160" font-family="DejaVu Sans Mono" font-size="14" fill="#1F4E79" font-weight="bold" text-anchor="start">invoice</text>
+<text x="50" y="180" font-family="DejaVu Sans" font-size="12" fill="#4B5563" font-weight="normal" text-anchor="start">la facture EN 16931 : vendeur, acheteur,</text>
+<text x="50" y="196" font-family="DejaVu Sans" font-size="12" fill="#4B5563" font-weight="normal" text-anchor="start">lignes, TVA, totaux</text>
+<rect x="36" y="210" width="388" height="64" rx="8" fill="#FFF4E5" stroke="#B45309" stroke-width="1.6"/>
+<text x="50" y="232" font-family="DejaVu Sans Mono" font-size="14" fill="#B45309" font-weight="bold" text-anchor="start">extraction</text>
+<text x="50" y="252" font-family="DejaVu Sans" font-size="12" fill="#4B5563" font-weight="normal" text-anchor="start">lecture OCR : source, moteur,</text>
+<text x="50" y="268" font-family="DejaVu Sans" font-size="12" fill="#4B5563" font-weight="normal" text-anchor="start">confiance, position des champs</text>
+<rect x="36" y="282" width="388" height="64" rx="8" fill="#FFF4E5" stroke="#B45309" stroke-width="1.6"/>
+<text x="50" y="304" font-family="DejaVu Sans Mono" font-size="14" fill="#B45309" font-weight="bold" text-anchor="start">validation</text>
+<text x="50" y="328" font-family="DejaVu Sans" font-size="12" fill="#4B5563" font-weight="normal" text-anchor="start">contrôles BR-* et STAIRLING-*</text>
+<rect x="36" y="354" width="388" height="64" rx="8" fill="#FFF4E5" stroke="#B45309" stroke-width="1.6"/>
+<text x="50" y="376" font-family="DejaVu Sans Mono" font-size="14" fill="#B45309" font-weight="bold" text-anchor="start">extensions</text>
+<text x="50" y="396" font-family="DejaVu Sans" font-size="12" fill="#4B5563" font-weight="normal" text-anchor="start">stairling:routing, stairling:platform,</text>
+<text x="50" y="412" font-family="DejaVu Sans" font-size="12" fill="#4B5563" font-weight="normal" text-anchor="start">stairling:classification</text>
+<text x="560" y="34" font-family="DejaVu Sans" font-size="16" fill="#4B5563" font-weight="bold" text-anchor="start">SCHÉMAS</text>
+<text x="651" y="34" font-family="DejaVu Sans" font-size="14" fill="#4B5563" font-weight="normal" text-anchor="start">(JSON Schema 2020-12)</text>
+<rect x="560" y="66" width="420" height="132" rx="8" fill="#FFF4E5" stroke="#B45309" stroke-width="2"/>
+<text x="576" y="92" font-family="DejaVu Sans" font-size="15" fill="#B45309" font-weight="bold" text-anchor="start">Schéma ENVELOPPE</text>
+<text x="576" y="112" font-family="DejaVu Sans Mono" font-size="11.5" fill="#4B5563" font-weight="normal" text-anchor="start">…_enveloppe_v001.schema.json</text>
+<text x="576" y="138" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">Valide le fichier entier : en-tête,</text>
+<text x="576" y="158" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">extraction, validation, extensions.</text>
+<text x="576" y="182" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="bold" text-anchor="start">Propre à STAIRLING.</text>
+<rect x="560" y="298" width="420" height="132" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="2"/>
+<text x="576" y="324" font-family="DejaVu Sans" font-size="15" fill="#1F4E79" font-weight="bold" text-anchor="start">Schéma INVOICE</text>
+<text x="576" y="344" font-family="DejaVu Sans Mono" font-size="11.5" fill="#4B5563" font-weight="normal" text-anchor="start">…_invoice_v001.schema.json</text>
+<text x="576" y="370" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">Valide la facture seule (EN 16931) ;</text>
+<text x="576" y="390" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">chaque champ porte son BT / BG.</text>
+<text x="576" y="414" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="bold" text-anchor="start">Aucune donnée STAIRLING.</text>
+<path d="M770 198 L770 296" fill="none" stroke="#1F4E79" stroke-width="1.8" marker-end="url(#a1F4E79)"/>
+<text x="782" y="226" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="start">$ref : renvoie au schéma</text>
+<text x="782" y="242" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="normal" text-anchor="start">invoice sans le recopier</text>
+<text x="782" y="258" font-family="DejaVu Sans" font-size="11" fill="#4B5563" font-weight="normal" text-anchor="start">(+ impose le décimal si besoin)</text>
+<path d="M560 106 C500 106, 500 106, 442 106" fill="none" stroke="#B45309" stroke-width="1.8" marker-end="url(#aB45309)"/>
+<text x="500" y="98" font-family="DejaVu Sans" font-size="11" fill="#B45309" font-weight="bold" text-anchor="middle">valide</text>
+<path d="M560 364 C495 364, 495 170.0, 426 170.0" fill="none" stroke="#1F4E79" stroke-width="1.8" marker-end="url(#a1F4E79)"/>
+<text x="458" y="158.0" font-family="DejaVu Sans" font-size="11" fill="#1F4E79" font-weight="bold" text-anchor="start">valide</text>
+<text x="20" y="468" font-family="DejaVu Sans" font-size="16" fill="#4B5563" font-weight="bold" text-anchor="start">POURQUOI DEUX FICHIERS</text>
+<rect x="20" y="484" width="470" height="124" rx="8" fill="#FFFFFF" stroke="#1F4E79" stroke-width="1.6"/>
+<text x="36" y="510" font-family="DejaVu Sans" font-size="14" fill="#1F4E79" font-weight="bold" text-anchor="start">Invoice : suit la norme EN 16931</text>
+<text x="36" y="534" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">Évolue avec la norme et le cadre français.</text>
+<text x="36" y="556" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">Peut être extrait et validé seul : c’est ce</text>
+<text x="36" y="576" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">que reçoit un tiers (plateforme agréée,</text>
+<text x="36" y="596" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">logiciel comptable).</text>
+<rect x="510" y="484" width="470" height="124" rx="8" fill="#FFFFFF" stroke="#B45309" stroke-width="1.6"/>
+<text x="526" y="510" font-family="DejaVu Sans" font-size="14" fill="#B45309" font-weight="bold" text-anchor="start">Enveloppe : suit les besoins STAIRLING</text>
+<text x="526" y="534" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">Nouvelle extension, nouvelle métadonnée OCR :</text>
+<text x="526" y="556" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">seul ce schéma change, la facture ne bouge pas.</text>
+<text x="526" y="576" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">Pour valider un fichier complet, on charge</text>
+<text x="526" y="596" font-family="DejaVu Sans" font-size="12.5" fill="#111827" font-weight="normal" text-anchor="start">les deux schémas et on valide avec celui-ci.</text>
+</svg>

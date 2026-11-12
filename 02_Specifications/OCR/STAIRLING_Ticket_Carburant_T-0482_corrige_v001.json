@@ -1,0 +1,165 @@
+{
+  "format": "urn:stairling:ocr-invoice",
+  "format_version": "1.0.0",
+  "numeric_encoding": {
+    "representation": "scaled_integer",
+    "scale": 2
+  },
+  "document_id": "91dcf6ab-9b33-41d6-bbda-5930ee798e31",
+  "invoice": {
+    "number": "T-0482",
+    "issue_date": "2026-10-15",
+    "type_code": "380",
+    "currency_code": "EUR",
+    "process_control": {
+      "specification_identifier": "urn:cen.eu:en16931:2017"
+    },
+    "seller": {
+      "name": "Station Exemple SAS",
+      "legal_registration_identifier": {
+        "scheme": "0002",
+        "value": "123456782"
+      },
+      "identifiers": [
+        {
+          "scheme": "0225",
+          "value": "12345678200028"
+        }
+      ],
+      "vat_identifier": "FR11123456782",
+      "postal_address": {
+        "address_line1": "1 avenue de l'Exemple",
+        "post_code": "93200",
+        "city": "Saint-Denis",
+        "country_code": "FR"
+      }
+    },
+    "buyer": {
+      "name": "STAIRLING UNION",
+      "legal_registration_identifier": {
+        "scheme": "0002",
+        "value": "928978279"
+      },
+      "postal_address": {
+        "country_code": "FR"
+      }
+    },
+    "payment_instructions": {
+      "payment_means_type_code": "48"
+    },
+    "lines": [
+      {
+        "identifier": "1",
+        "invoiced_quantity": 3245,
+        "invoiced_quantity_code": "LTR",
+        "net_amount": 5000,
+        "price_details": {
+          "item_net_price": "1.5408"
+        },
+        "item_information": {
+          "name": "Gazole B7"
+        },
+        "vat_information": {
+          "invoiced_item_vat_category_code": "S",
+          "invoiced_item_vat_rate": 2000
+        }
+      }
+    ],
+    "vat_break_down": [
+      {
+        "vat_category_code": "S",
+        "vat_category_rate": 2000,
+        "vat_category_taxable_amount": 5000,
+        "vat_category_tax_amount": 1000
+      }
+    ],
+    "totals": {
+      "sum_invoice_lines_amount": 5000,
+      "total_without_vat": 5000,
+      "total_vat_amount": {
+        "value": 1000,
+        "currency_code": "EUR"
+      },
+      "total_with_vat": 6000,
+      "paid_amount": 6000,
+      "amount_due_for_payment": 0
+    }
+  },
+  "extraction": {
+    "source": {
+      "file_name": "ticket_station_2026-10-15.jpg",
+      "media_type": "image/jpeg",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "page_count": 1
+    },
+    "engine": {
+      "name": "ocr-engine",
+      "version": "0.0.0"
+    },
+    "extracted_at": "2026-10-15T18:42:00Z",
+    "fields": [
+      {
+        "pointer": "/invoice/lines/0/invoiced_quantity",
+        "raw": "32,45 L"
+      },
+      {
+        "pointer": "/invoice/lines/0/price_details/item_net_price",
+        "status": "inferred",
+        "raw": "1,849 €/L"
+      },
+      {
+        "pointer": "/invoice/lines/0/net_amount",
+        "raw": "HT 50,00"
+      },
+      {
+        "pointer": "/invoice/totals/total_with_vat",
+        "raw": "TOTAL 60,00 EUR"
+      },
+      {
+        "pointer": "/invoice/buyer",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/invoice/lines/0/identifier",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/invoice/payment_instructions/payment_means_type_code",
+        "raw": "CB SANS CONTACT"
+      },
+      {
+        "pointer": "/extensions/stairling:routing/worker_id",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/extensions/stairling:classification/lines/0/category",
+        "status": "inferred"
+      }
+    ]
+  },
+  "validation": {
+    "status": "ok",
+    "checks": [
+      { "rule": "STAIRLING-SUM-LINES", "result": "pass" },
+      { "rule": "STAIRLING-HT-TVA-TTC", "result": "pass" },
+      { "rule": "BR-CO-13", "result": "pass" },
+      { "rule": "BR-S-08", "result": "pass" },
+      { "rule": "BR-S-09", "result": "pass" },
+      { "rule": "STAIRLING-TOTAL-COLLECTED", "result": "not_applicable" },
+      { "rule": "STAIRLING-CLASSIFICATION", "result": "pass" }
+    ]
+  },
+  "extensions": {
+    "stairling:routing": {
+      "tenant_id": "stairling-union",
+      "direction": "purchase",
+      "worker_id": "ES-0042"
+    },
+    "stairling:classification": {
+      "list_version": "1",
+      "lines": [
+        { "line": "1", "category": "CARBURANT" }
+      ]
+    }
+  }
+}

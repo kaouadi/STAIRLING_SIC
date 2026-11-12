@@ -1,0 +1,58 @@
+{
+  "seq": 104527,
+  "event_id": "0b6e…",
+  "stream_id": "ES-0042",
+  "stream_version": 52,
+  "event_type": "FACTURE_VENTE",
+  "schema_version": 1,
+  "occurred_at": "2026-11-07T00:00:00Z",
+  "recorded_at": "2026-11-07T09:14:22Z",
+  "document_id": "7c1d…",
+  "causation_id": null,
+  "actor": "api:uber",
+  "payload": {
+    "numeric_encoding": { "representation": "scaled_integer", "scale": 2 },
+    "statut": "RECU",
+    "plateforme": "UBER",
+    "number": "UBER-FR-2026-118204",
+    "issue_date": "2026-11-07",
+    "delivery_date": "2026-11-07",
+    "type_code": "380",
+    "course_ids": ["UBER-8841"],
+    "seller": {
+      "name": "STAIRLING UNION",
+      "siren": "928978279",
+      "vat_identifier": "FR10928978279",
+      "address_line1": "5 RUE Pleyel",
+      "post_code": "93200",
+      "city": "Saint-Denis",
+      "country_code": "FR"
+    },
+    "buyer": {
+      "buyer_type": "B2B",
+      "name": "Exemple Conseil SAS",
+      "siren": "123456782",
+      "country_code": "FR"
+    },
+    "lines": [
+      { "line_id": "1", "name": "Prix du service de transport", "net_amount": 3000, "vat_category_code": "S", "vat_rate": 1000, "category": "COURSE" },
+      { "line_id": "2", "name": "Supplément", "net_amount": 500, "vat_category_code": "S", "vat_rate": 2000, "category": "SUPPLEMENT_COURSE" },
+      { "line_id": "3", "name": "Pourboire", "net_amount": 300, "vat_category_code": "O", "vat_rate": 0, "category": "POURBOIRE" }
+    ],
+    "vat_break_down": [
+      { "vat_category_code": "S", "vat_rate": 1000, "taxable_amount": 2700, "tax_amount": 270 },
+      { "vat_category_code": "S", "vat_rate": 2000, "taxable_amount": 600, "tax_amount": 120 },
+      { "vat_category_code": "O", "vat_rate": 0, "taxable_amount": 300, "tax_amount": 0 }
+    ],
+    "totals": {
+      "sum_invoice_lines_amount": 3800,
+      "sum_allowances_amount": 300,
+      "sum_charges_amount": 100,
+      "total_without_vat": 3600,
+      "total_vat_amount": 390,
+      "total_with_vat": 3990,
+      "amount_due_for_payment": 3990
+    },
+    "sha256": "4e07…"
+  }
+}

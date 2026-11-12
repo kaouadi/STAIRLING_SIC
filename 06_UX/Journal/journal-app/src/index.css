@@ -1,0 +1,11 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { min-height: 100%; width: 100%; }
+body { font-family: 'DM Sans', system-ui, sans-serif; background: #f0ede6; }
+
+/* DM Sans — embarquée via @font-face pour un fonctionnement 100% hors-ligne */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d6d0c4; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #a8a29e; }

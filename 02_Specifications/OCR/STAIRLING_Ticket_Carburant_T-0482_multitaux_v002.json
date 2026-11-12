@@ -1,0 +1,247 @@
+{
+  "format": "urn:stairling:ocr-invoice",
+  "format_version": "1.0.0",
+  "numeric_encoding": {
+    "representation": "scaled_integer",
+    "scale": 2
+  },
+  "document_id": "5bd59e25-5327-42c0-854b-c23585f2aa8f",
+  "invoice": {
+    "number": "T-0482",
+    "issue_date": "2026-10-15",
+    "type_code": "380",
+    "currency_code": "EUR",
+    "process_control": {
+      "specification_identifier": "urn:cen.eu:en16931:2017"
+    },
+    "seller": {
+      "name": "Station Exemple SAS",
+      "legal_registration_identifier": {
+        "scheme": "0002",
+        "value": "123456782"
+      },
+      "identifiers": [
+        {
+          "scheme": "0225",
+          "value": "12345678200028"
+        }
+      ],
+      "vat_identifier": "FR11123456782",
+      "postal_address": {
+        "address_line1": "1 avenue de l'Exemple",
+        "post_code": "93200",
+        "city": "Saint-Denis",
+        "country_code": "FR"
+      }
+    },
+    "buyer": {
+      "name": "STAIRLING UNION",
+      "legal_registration_identifier": {
+        "scheme": "0002",
+        "value": "928978279"
+      },
+      "postal_address": {
+        "country_code": "FR"
+      }
+    },
+    "payment_instructions": {
+      "payment_means_type_code": "48"
+    },
+    "lines": [
+      {
+        "identifier": "1",
+        "invoiced_quantity": 3245,
+        "invoiced_quantity_code": "LTR",
+        "net_amount": 5000,
+        "price_details": {
+          "item_net_price": "1.5408"
+        },
+        "item_information": {
+          "name": "Gazole B7"
+        },
+        "vat_information": {
+          "invoiced_item_vat_category_code": "S",
+          "invoiced_item_vat_rate": 2000
+        }
+      },
+      {
+        "identifier": "2",
+        "invoiced_quantity": 100,
+        "invoiced_quantity_code": "C62",
+        "net_amount": 575,
+        "price_details": {
+          "item_net_price": 575
+        },
+        "item_information": {
+          "name": "Lave-glace 5 L"
+        },
+        "vat_information": {
+          "invoiced_item_vat_category_code": "S",
+          "invoiced_item_vat_rate": 2000
+        }
+      },
+      {
+        "identifier": "3",
+        "invoiced_quantity": 100,
+        "invoiced_quantity_code": "C62",
+        "net_amount": 400,
+        "price_details": {
+          "item_net_price": 400
+        },
+        "item_information": {
+          "name": "Eau minérale pack 6 x 50 cl"
+        },
+        "vat_information": {
+          "invoiced_item_vat_category_code": "S",
+          "invoiced_item_vat_rate": 550
+        }
+      }
+    ],
+    "vat_break_down": [
+      {
+        "vat_category_code": "S",
+        "vat_category_rate": 2000,
+        "vat_category_taxable_amount": 5575,
+        "vat_category_tax_amount": 1115
+      },
+      {
+        "vat_category_code": "S",
+        "vat_category_rate": 550,
+        "vat_category_taxable_amount": 400,
+        "vat_category_tax_amount": 22
+      }
+    ],
+    "totals": {
+      "sum_invoice_lines_amount": 5975,
+      "total_without_vat": 5975,
+      "total_vat_amount": {
+        "value": 1137,
+        "currency_code": "EUR"
+      },
+      "total_with_vat": 7112,
+      "paid_amount": 7112,
+      "amount_due_for_payment": 0
+    }
+  },
+  "extraction": {
+    "source": {
+      "file_name": "ticket_station_2026-10-15.jpg",
+      "media_type": "image/jpeg",
+      "sha256": "bce49cf4b2f2f78918b9d0f70e21afc20f8547378f589b584b5f3aebce5777bb",
+      "page_count": 1
+    },
+    "engine": {
+      "name": "ocr-engine",
+      "version": "0.0.0"
+    },
+    "extracted_at": "2026-10-15T18:42:00Z",
+    "fields": [
+      {
+        "pointer": "/invoice/lines/0/invoiced_quantity",
+        "raw": "32,45 L"
+      },
+      {
+        "pointer": "/invoice/lines/0/price_details/item_net_price",
+        "status": "inferred",
+        "raw": "1,849 €/L"
+      },
+      {
+        "pointer": "/invoice/lines/0/net_amount",
+        "raw": "HT 50,00"
+      },
+      {
+        "pointer": "/invoice/lines/1/net_amount",
+        "status": "inferred",
+        "raw": "LAVE-GLACE 5L 6,90 A"
+      },
+      {
+        "pointer": "/invoice/lines/1/price_details/item_net_price",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/invoice/lines/2/net_amount",
+        "status": "inferred",
+        "raw": "EAU PACK 6X50CL 4,22 B"
+      },
+      {
+        "pointer": "/invoice/lines/2/price_details/item_net_price",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/invoice/vat_break_down/0",
+        "raw": "A 20,00% HT 55,75 TVA 11,15"
+      },
+      {
+        "pointer": "/invoice/vat_break_down/1",
+        "raw": "B 5,50% HT 4,00 TVA 0,22"
+      },
+      {
+        "pointer": "/invoice/totals/total_with_vat",
+        "raw": "TOTAL 71,12 EUR"
+      },
+      {
+        "pointer": "/invoice/buyer",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/invoice/lines/0/identifier",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/invoice/lines/1/identifier",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/invoice/lines/2/identifier",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/invoice/payment_instructions/payment_means_type_code",
+        "raw": "CB SANS CONTACT"
+      },
+      {
+        "pointer": "/extensions/stairling:routing/worker_id",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/extensions/stairling:classification/lines/0/category",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/extensions/stairling:classification/lines/1/category",
+        "status": "inferred"
+      },
+      {
+        "pointer": "/extensions/stairling:classification/lines/2/category",
+        "status": "inferred"
+      }
+    ]
+  },
+  "validation": {
+    "status": "ok",
+    "checks": [
+      { "rule": "STAIRLING-SUM-LINES", "result": "pass" },
+      { "rule": "STAIRLING-HT-TVA-TTC", "result": "pass" },
+      { "rule": "BR-CO-13", "result": "pass" },
+      { "rule": "BR-S-08", "result": "pass" },
+      { "rule": "BR-S-09", "result": "pass" },
+      { "rule": "STAIRLING-TOTAL-COLLECTED", "result": "not_applicable" },
+      { "rule": "STAIRLING-CLASSIFICATION", "result": "pass" }
+    ]
+  },
+  "extensions": {
+    "stairling:routing": {
+      "tenant_id": "stairling-union",
+      "direction": "purchase",
+      "worker_id": "ES-0042"
+    },
+    "stairling:classification": {
+      "list_version": "1",
+      "lines": [
+        { "line": "1", "category": "CARBURANT" },
+        { "line": "2", "category": "ENTRETIEN_REPARATION" },
+        { "line": "3", "category": "FOURNITURES_CLIENT" }
+      ]
+    }
+  }
+}

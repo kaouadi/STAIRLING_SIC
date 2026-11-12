@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAIRLING SIC — Transactions</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F3EF;
+    --surface: #FAFAF8;
+    --surface2: #EEECEA;
+    --border: #DDDBD6;
+    --border2: #C8C5BE;
+    --ink: #1A1916;
+    --ink2: #6B6860;
+    --ink3: #9B9890;
+    --accent: #2563EB;
+    --green: #16A34A;
+    --green-bg: #ECFDF5;
+    --green-border: #A7F3D0;
+    --amber: #B45309;
+    --amber-bg: #FFFBEB;
+    --amber-border: #FDE68A;
+    --blue: #1D4ED8;
+    --blue-bg: #EFF6FF;
+    --blue-border: #BFDBFE;
+    --red-bg: #FEF2F2;
+    --red: #B91C1C;
+    --debit-color: #1D4ED8;
+    --credit-color: #15803D;
+    --font: 'DM Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --radius: 6px;
+    --radius-lg: 10px;
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.5; }
+
+  .shell { display: flex; height: 100vh; overflow: hidden; }
+
+  /* ── SIDEBAR ── */
+  .sidebar { width: 220px; flex-shrink: 0; background: var(--ink); display: flex; flex-direction: column; }
+  .sidebar-logo { padding: 20px 20px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .sidebar-logo .wordmark { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #fff; text-transform: uppercase; }
+  .sidebar-logo .sub { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; margin-top: 1px; }
+  .sidebar-nav { padding: 16px 10px; flex: 1; }
+  .nav-section { font-size: 9px; font-weight: 600; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); text-transform: uppercase; padding: 0 10px; margin-bottom: 6px; margin-top: 16px; }
+  .nav-section:first-child { margin-top: 0; }
+  .nav-item { display: flex; align-items: center; gap: 9px; padding: 7px 10px; border-radius: var(--radius); font-size: 13px; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.15s; margin-bottom: 1px; }
+  .nav-item:hover { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.8); }
+  .nav-item.active { background: rgba(255,255,255,0.1); color: #fff; font-weight: 500; }
+  .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.6; flex-shrink: 0; }
+  .nav-active-dot { background: #60A5FA; opacity: 1; }
+
+  /* ── MAIN ── */
+  .main { flex: 1; overflow: auto; display: flex; flex-direction: column; }
+
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 28px; height: 52px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; position: sticky; top: 0; z-index: 10; }
+  .breadcrumb { font-size: 12px; color: var(--ink3); display: flex; align-items: center; gap: 6px; }
+  .breadcrumb span { color: var(--ink); font-weight: 500; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #fff; }
+
+  .content { padding: 24px 28px; flex: 1; }
+
+  .page-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
+  .page-title { font-size: 20px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
+  .page-sub { font-size: 13px; color: var(--ink2); margin-top: 3px; }
+
+  /* ── STATS ── */
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; }
+  .stat-label { font-size: 11px; font-weight: 500; color: var(--ink3); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
+  .stat-value { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); font-family: var(--mono); }
+  .stat-value.debit { color: var(--debit-color); }
+  .stat-value.credit { color: var(--credit-color); }
+
+  /* ── TOOLBAR ── */
+  .toolbar { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 12px 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .filter-label { font-size: 12px; color: var(--ink2); font-weight: 500; }
+  .filter-select { padding: 7px 10px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); color: var(--ink); font-size: 13px; font-family: var(--font); cursor: pointer; outline: none; }
+  .filter-select:focus { border-color: var(--accent); }
+  .search-wrap { position: relative; flex: 1; min-width: 200px; max-width: 300px; }
+  .search-input { width: 100%; padding: 7px 10px 7px 30px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); color: var(--ink); font-size: 13px; font-family: var(--font); outline: none; }
+  .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--ink3); font-size: 13px; }
+  .toolbar-right { margin-left: auto; display: flex; gap: 8px; }
+  .btn { padding: 7px 14px; border-radius: var(--radius); font-size: 13px; font-family: var(--font); font-weight: 500; cursor: pointer; border: none; transition: all 0.15s; }
+  .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--ink2); }
+  .btn-ghost:hover { border-color: var(--border2); color: var(--ink); background: var(--surface2); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #1D4ED8; }
+
+  /* ── TABLE ── */
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-top: none; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { padding: 10px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3); text-align: left; background: var(--surface2); border-bottom: 1px solid var(--border); white-space: nowrap; }
+  thead th.right { text-align: right; }
+  thead th.center { text-align: center; }
+  tbody tr { border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.1s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #F0EFEB; }
+  tbody td { padding: 12px 16px; font-size: 13px; color: var(--ink); }
+  tbody td.right { text-align: right; }
+  tbody td.center { text-align: center; }
+
+  .num-link { color: var(--accent); font-weight: 600; font-family: var(--mono); font-size: 13px; text-decoration: none; }
+  .num-link:hover { text-decoration: underline; }
+
+  .print-btn { background: none; border: none; cursor: pointer; color: var(--ink3); padding: 2px 4px; border-radius: 4px; font-size: 14px; transition: color 0.1s; }
+  .print-btn:hover { color: var(--accent); }
+
+  .amount-d { color: var(--debit-color); font-family: var(--mono); font-weight: 500; }
+  .amount-c { color: var(--credit-color); font-family: var(--mono); font-weight: 500; }
+
+  .status-pill { display: inline-flex; align-items: center; justify-content: center; padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+  .pill-v { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .pill-d { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .pill-r { background: var(--red-bg); color: var(--red); }
+
+  .journal-tag { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 500; background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; color: var(--ink2); }
+
+  /* ── PAGINATION ── */
+  .pagination-bar { background: var(--surface); border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+  .pagination-info { font-size: 12px; color: var(--ink3); }
+  .pagination-controls { display: flex; align-items: center; gap: 4px; }
+  .page-btn { min-width: 32px; height: 32px; padding: 0 8px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink2); font-size: 13px; font-family: var(--font); cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
+  .page-btn:hover:not(:disabled) { border-color: var(--border2); background: var(--surface2); color: var(--ink); }
+  .page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .page-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+  .page-btn.text { min-width: auto; padding: 0 10px; font-size: 12px; }
+
+  /* ── MODAL ── */
+  .modal-backdrop { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(15,14,12,0.45); backdrop-filter: blur(2px); align-items: center; justify-content: center; }
+  .modal-backdrop.open { display: flex; }
+  .modal { background: var(--surface); width: calc(100vw - 60px); height: calc(100vh - 60px); border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-lg); overflow: hidden; display: flex; flex-direction: column; }
+  .modal-topbar { padding: 0 28px; height: 52px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--surface); flex-shrink: 0; }
+  .modal-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 3px; }
+  .modal-h { font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .modal-back { display: flex; align-items: center; gap: 7px; background: none; border: 1px solid var(--border); border-radius: var(--radius); padding: 5px 12px; font-size: 13px; font-family: var(--font); font-weight: 500; color: var(--ink2); cursor: pointer; transition: all 0.15s; }
+  .modal-back:hover { border-color: var(--border2); color: var(--ink); background: var(--surface2); }
+  .modal-close-x { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--ink2); transition: all 0.15s; }
+  .modal-close-x:hover { background: var(--surface2); border-color: var(--border2); color: var(--ink); }
+  .modal-meta-bar { display: flex; background: var(--surface2); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .meta-cell { padding: 12px 24px; flex: 1; border-right: 1px solid var(--border); }
+  .meta-cell:last-child { border-right: none; }
+  .meta-cell .lbl { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 5px; }
+  .meta-cell .val { font-size: 15px; font-weight: 600; color: var(--ink); font-family: var(--mono); }
+  .modal-scroll { overflow-y: auto; flex: 1; background: var(--bg); }
+  .modal-section { padding: 28px; }
+  .modal-section-title { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink3); margin-bottom: 14px; }
+  .modal-footer { padding: 14px 28px; background: var(--surface); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: flex-end; gap: 24px; flex-shrink: 0; }
+  .footer-total { display: flex; align-items: baseline; gap: 8px; }
+  .footer-total .lbl { font-size: 12px; color: var(--ink3); font-weight: 500; }
+  .footer-total .val { font-size: 16px; font-weight: 600; font-family: var(--mono); }
+  .sep { width: 1px; height: 22px; background: var(--border); }
+  .modal .highlighted { background: #FFF7ED; border-left: 3px solid #F59E0B; }
+  .modal .highlighted td:first-child { padding-left: 13px; }
+  .account-tag { font-family: var(--mono); font-size: 12px; font-weight: 500; background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; color: var(--ink); }
+  .amount-zero { color: var(--ink3); font-family: var(--mono); font-size: 12px; }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="wordmark">Stairling</div>
+      <div class="sub">SIC · Exercice 2026</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Comptabilité</div>
+      <div class="nav-item"><span class="nav-dot"></span>Tableau de bord</div>
+      <div class="nav-item"><span class="nav-dot"></span>Lignes d'écriture</div>
+      <div class="nav-item"><span class="nav-dot"></span>Grand livre</div>
+      <div class="nav-item"><span class="nav-dot"></span>Balance</div>
+      <div class="nav-section">Plateformes</div>
+      <div class="nav-item active"><span class="nav-dot nav-active-dot"></span>Transactions</div>
+      <div class="nav-item"><span class="nav-dot"></span>Chauffeurs</div>
+      <div class="nav-item"><span class="nav-dot"></span>Plateformes</div>
+      <div class="nav-section">Paramètres</div>
+      <div class="nav-item"><span class="nav-dot"></span>Plan comptable</div>
+      <div class="nav-item"><span class="nav-dot"></span>Journaux</div>
+      <div class="nav-item"><span class="nav-dot"></span>Exercices fiscaux</div>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="breadcrumb">Comptabilité <span>›</span> <span>Transactions</span></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="font-size:12px;color:var(--ink3)">FY 2026 · OPEN</div>
+        <div class="avatar">MC</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Page header -->
+      <div class="page-header">
+        <div>
+          <div class="page-title">Transactions</div>
+          <div class="page-sub" id="page-sub">— transactions · Exercice 2026</div>
+        </div>
+        <button class="btn btn-primary">+ Nouvelle transaction</button>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Total transactions</div>
+          <div class="stat-value" id="stat-total">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total débit</div>
+          <div class="stat-value debit" id="stat-debit">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total crédit</div>
+          <div class="stat-value credit" id="stat-credit">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Validées</div>
+          <div class="stat-value" id="stat-validated">—</div>
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input class="search-input" id="search" placeholder="Rechercher N°, journal…" type="text">
+        </div>
+        <span class="filter-label">Journaux</span>
+        <select class="filter-select" id="filter-journal">
+          <option value="">Tous</option>
+          <option value="JVT_UBER">JVT_UBER</option>
+          <option value="JVT_BOLT">JVT_BOLT</option>
+          <option value="OD">OD</option>
+        </select>
+        <span class="filter-label">Mois</span>
+        <select class="filter-select" id="filter-month">
+          <option value="">Tous</option>
+          <option value="1">Janvier</option>
+          <option value="2">Février</option>
+          <option value="3">Mars</option>
+          <option value="4">Avril</option>
+          <option value="5">Mai</option>
+          <option value="6">Juin</option>
+          <option value="7">Juillet</option>
+          <option value="8">Août</option>
+          <option value="9">Septembre</option>
+          <option value="10">Octobre</option>
+          <option value="11">Novembre</option>
+          <option value="12">Décembre</option>
+        </select>
+        <span class="filter-label">Statut</span>
+        <select class="filter-select" id="filter-status">
+          <option value="">Tous</option>
+          <option value="VALIDATED">Validé</option>
+          <option value="DRAFT">Brouillon</option>
+        </select>
+        <div class="toolbar-right">
+          <button class="btn btn-ghost">Exporter</button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:90px">N°</th>
+              <th style="width:80px">Mois</th>
+              <th style="width:80px">Année</th>
+              <th class="center" style="width:90px">État</th>
+              <th style="width:130px">Journal</th>
+              <th class="right" style="width:140px">Débit</th>
+              <th class="right" style="width:140px">Crédit</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-bar">
+        <div class="pagination-info" id="pagination-info"></div>
+        <div class="pagination-controls" id="pagination-controls"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal détail transaction -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal">
+    <div class="modal-topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="modal-back" id="modal-close">← Retour aux transactions</button>
+        <div style="width:1px;height:20px;background:var(--border)"></div>
+        <div>
+          <div class="modal-eyebrow">Transaction</div>
+          <div class="modal-h" id="modal-title"></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="font-size:12px;color:var(--ink3)">FY 2026 · OPEN</div>
+        <div class="avatar">MC</div>
+        <button class="modal-close-x" id="modal-close-x">✕</button>
+      </div>
+    </div>
+    <div class="modal-meta-bar" id="modal-meta"></div>
+    <div class="modal-scroll">
+      <div class="modal-section">
+        <div class="modal-section-title">Lignes d'écriture comptable</div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+          <table>
+            <thead>
+              <tr>
+                <th class="center" style="width:52px">N°</th>
+                <th style="width:104px">Date</th>
+                <th>Libellé</th>
+                <th style="width:130px">Compte</th>
+                <th style="width:180px">Réf. pièce</th>
+                <th class="right" style="width:120px">Débit</th>
+                <th class="right" style="width:120px">Crédit</th>
+              </tr>
+            </thead>
+            <tbody id="modal-lines-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer" id="modal-footer"></div>
+  </div>
+</div>
+
+<script>
+const MONTHS = ['','Janv.','Févr.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
+
+const TRANSACTIONS = [
+  { id: 1001, month: 3, year: 2026, status: 'VALIDATED', journal: 'JVT_UBER', total_debit: 330.00, total_credit: 330.00,
+    lines: [
+      { id: 10011, date: '14/03/2026', name: 'Ventes UBER 14/03/2026', account: '4110UBER', docref: 'LOT-UBER-001-20260314', debit: 330.00, credit: 0 },
+      { id: 10012, date: '14/03/2026', name: 'Ventes UBER DUPONT 14/03/2026', account: '7061DUPONT', docref: 'LOT-UBER-001-20260314', debit: 0, credit: 200.00 },
+      { id: 10013, date: '14/03/2026', name: 'Ventes UBER XAVIER 14/03/2026', account: '7061XAVIER', docref: 'LOT-UBER-002-20260314', debit: 0, credit: 100.00 },
+      { id: 10014, date: '14/03/2026', name: 'TVA UBER 14/03/2026', account: '445711UBER', docref: 'LOT-UBER-001-20260314', debit: 0, credit: 30.00 },
+    ]
+  },
+  { id: 1002, month: 3, year: 2026, status: 'VALIDATED', journal: 'JVT_UBER', total_debit: 242.00, total_credit: 242.00,
+    lines: [
+      { id: 10021, date: '15/03/2026', name: 'Ventes UBER 15/03/2026', account: '4110UBER', docref: 'LOT-UBER-003-20260315', debit: 242.00, credit: 0 },
+      { id: 10022, date: '15/03/2026', name: 'Ventes UBER KARIM 15/03/2026', account: '7061KARIM', docref: 'LOT-UBER-003-20260315', debit: 0, credit: 180.00 },
+      { id: 10023, date: '15/03/2026', name: 'Ventes UBER DUPONT 15/03/2026', account: '7061DUPONT', docref: 'LOT-UBER-004-20260315', debit: 0, credit: 40.00 },
+      { id: 10024, date: '15/03/2026', name: 'TVA UBER 15/03/2026', account: '445711UBER', docref: 'LOT-UBER-003-20260315', debit: 0, credit: 22.00 },
+    ]
+  },
+  { id: 1003, month: 3, year: 2026, status: 'VALIDATED', journal: 'JVT_BOLT', total_debit: 154.00, total_credit: 154.00,
+    lines: [
+      { id: 10031, date: '14/03/2026', name: 'Ventes BOLT 14/03/2026', account: '4110BOLT', docref: 'LOT-BOLT-001-20260314', debit: 154.00, credit: 0 },
+      { id: 10032, date: '14/03/2026', name: 'Ventes BOLT DUPONT 14/03/2026', account: '7062DUPONT', docref: 'LOT-BOLT-001-20260314', debit: 0, credit: 112.00 },
+      { id: 10033, date: '14/03/2026', name: 'TVA BOLT 14/03/2026', account: '445660BOLT', docref: 'LOT-BOLT-001-20260314', debit: 0, credit: 42.00 },
+    ]
+  },
+  { id: 1004, month: 4, year: 2026, status: 'DRAFT', journal: 'JVT_UBER', total_debit: 88.00, total_credit: 88.00,
+    lines: [
+      { id: 10041, date: '01/04/2026', name: 'Ventes UBER 01/04/2026', account: '4110UBER', docref: 'LOT-UBER-010-20260401', debit: 88.00, credit: 0 },
+      { id: 10042, date: '01/04/2026', name: 'Ventes UBER XAVIER 01/04/2026', account: '7061XAVIER', docref: 'LOT-UBER-010-20260401', debit: 0, credit: 80.00 },
+      { id: 10043, date: '01/04/2026', name: 'TVA UBER 01/04/2026', account: '445711UBER', docref: 'LOT-UBER-010-20260401', debit: 0, credit: 8.00 },
+    ]
+  },
+  { id: 1005, month: 2, year: 2026, status: 'VALIDATED', journal: 'JVT_BOLT', total_debit: 210.00, total_credit: 210.00,
+    lines: [
+      { id: 10051, date: '28/02/2026', name: 'Ventes BOLT 28/02/2026', account: '4110BOLT', docref: 'LOT-BOLT-002-20260228', debit: 210.00, credit: 0 },
+      { id: 10052, date: '28/02/2026', name: 'Ventes BOLT KARIM 28/02/2026', account: '7062KARIM', docref: 'LOT-BOLT-002-20260228', debit: 0, credit: 150.00 },
+      { id: 10053, date: '28/02/2026', name: 'TVA BOLT 28/02/2026', account: '445660BOLT', docref: 'LOT-BOLT-002-20260228', debit: 0, credit: 60.00 },
+    ]
+  },
+  { id: 1006, month: 2, year: 2026, status: 'VALIDATED', journal: 'JVT_UBER', total_debit: 415.50, total_credit: 415.50,
+    lines: [
+      { id: 10061, date: '14/02/2026', name: 'Ventes UBER 14/02/2026', account: '4110UBER', docref: 'LOT-UBER-005-20260214', debit: 415.50, credit: 0 },
+      { id: 10062, date: '14/02/2026', name: 'Ventes UBER DUPONT 14/02/2026', account: '7061DUPONT', docref: 'LOT-UBER-005-20260214', debit: 0, credit: 280.00 },
+      { id: 10063, date: '14/02/2026', name: 'Ventes UBER XAVIER 14/02/2026', account: '7061XAVIER', docref: 'LOT-UBER-006-20260214', debit: 0, credit: 98.00 },
+      { id: 10064, date: '14/02/2026', name: 'TVA UBER 14/02/2026', account: '445711UBER', docref: 'LOT-UBER-005-20260214', debit: 0, credit: 37.50 },
+    ]
+  },
+  { id: 1007, month: 1, year: 2026, status: 'VALIDATED', journal: 'JVT_UBER', total_debit: 198.00, total_credit: 198.00,
+    lines: [
+      { id: 10071, date: '20/01/2026', name: 'Ventes UBER 20/01/2026', account: '4110UBER', docref: 'LOT-UBER-007-20260120', debit: 198.00, credit: 0 },
+      { id: 10072, date: '20/01/2026', name: 'Ventes UBER KARIM 20/01/2026', account: '7061KARIM', docref: 'LOT-UBER-007-20260120', debit: 0, credit: 180.00 },
+      { id: 10073, date: '20/01/2026', name: 'TVA UBER 20/01/2026', account: '445711UBER', docref: 'LOT-UBER-007-20260120', debit: 0, credit: 18.00 },
+    ]
+  },
+  { id: 1008, month: 1, year: 2026, status: 'VALIDATED', journal: 'JVT_BOLT', total_debit: 306.00, total_credit: 306.00,
+    lines: [
+      { id: 10081, date: '15/01/2026', name: 'Ventes BOLT 15/01/2026', account: '4110BOLT', docref: 'LOT-BOLT-003-20260115', debit: 306.00, credit: 0 },
+      { id: 10082, date: '15/01/2026', name: 'Ventes BOLT DUPONT 15/01/2026', account: '7062DUPONT', docref: 'LOT-BOLT-003-20260115', debit: 0, credit: 240.00 },
+      { id: 10083, date: '15/01/2026', name: 'TVA BOLT 15/01/2026', account: '445660BOLT', docref: 'LOT-BOLT-003-20260115', debit: 0, credit: 66.00 },
+    ]
+  },
+];
+
+const PAGE_SIZE = 6;
+let currentPage = 1;
+
+const fmt = v => new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+const pill = s => {
+  const m = { VALIDATED: ['pill-v','Validé'], DRAFT: ['pill-d','Brouillon'], REVERSED: ['pill-r','Extourné'] };
+  const [c, l] = m[s] || ['pill-d', s];
+  return `<span class="status-pill ${c}">${l}</span>`;
+};
+const bal = v => {
+  if (Math.abs(v) < 0.001) return '<span class="amount-zero">0,00</span>';
+  return v > 0 ? `<span class="amount-d">${fmt(v)}</span>` : `<span style="color:var(--red);font-family:var(--mono);font-weight:500">-${fmt(Math.abs(v))}</span>`;
+};
+
+function getFiltered() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const journal = document.getElementById('filter-journal').value;
+  const month = document.getElementById('filter-month').value;
+  const status = document.getElementById('filter-status').value;
+  return TRANSACTIONS.filter(t => {
+    if (journal && t.journal !== journal) return false;
+    if (month && t.month !== parseInt(month)) return false;
+    if (status && t.status !== status) return false;
+    if (search && !(String(t.id) + t.journal).toLowerCase().includes(search)) return false;
+    return true;
+  });
+}
+
+function render() {
+  const filtered = getFiltered();
+  const total = filtered.length;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if (currentPage > totalPages) currentPage = 1;
+
+  const page = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  // stats
+  const sumD = filtered.reduce((s, t) => s + t.total_debit, 0);
+  const sumC = filtered.reduce((s, t) => s + t.total_credit, 0);
+  const validated = filtered.filter(t => t.status === 'VALIDATED').length;
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-debit').textContent = fmt(sumD);
+  document.getElementById('stat-credit').textContent = fmt(sumC);
+  document.getElementById('stat-validated').textContent = validated;
+  document.getElementById('page-sub').textContent = `${total} transaction${total > 1 ? 's' : ''} · Exercice 2026`;
+
+  // table
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = page.map(t => `
+    <tr data-id="${t.id}">
+      <td><a class="num-link">#${t.id}</a></td>
+      <td style="color:var(--ink2)">${MONTHS[t.month]}</td>
+      <td style="color:var(--ink2)">${t.year}</td>
+      <td class="center">${pill(t.status)}</td>
+      <td><span class="journal-tag">${t.journal}</span></td>
+      <td class="right"><span class="amount-d">${fmt(t.total_debit)}</span></td>
+      <td class="right"><span class="amount-c">${fmt(t.total_credit)}</span></td>
+    </tr>
+  `).join('');
+
+  tbody.querySelectorAll('tr').forEach(tr => {
+    tr.addEventListener('click', e => {
+      openModal(parseInt(tr.dataset.id));
+    });
+  });
+
+  // pagination info
+  const from = total === 0 ? 0 : (currentPage - 1) * PAGE_SIZE + 1;
+  const to = Math.min(currentPage * PAGE_SIZE, total);
+  document.getElementById('pagination-info').textContent = total === 0 ? 'Aucun résultat' : `${from}–${to} sur ${total} transaction${total > 1 ? 's' : ''}`;
+
+  // pagination controls
+  const ctrl = document.getElementById('pagination-controls');
+  let html = `<button class="page-btn text" ${currentPage === 1 ? 'disabled' : ''} data-page="first">Première page</button>`;
+  html += `<button class="page-btn text" ${currentPage === 1 ? 'disabled' : ''} data-page="prev">Page précédente</button>`;
+  for (let i = 1; i <= totalPages; i++) {
+    html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+  }
+  html += `<button class="page-btn text" ${currentPage === totalPages ? 'disabled' : ''} data-page="next">Page suivante</button>`;
+  html += `<button class="page-btn text" ${currentPage === totalPages ? 'disabled' : ''} data-page="last">Dernière page</button>`;
+  ctrl.innerHTML = html;
+
+  ctrl.querySelectorAll('button:not(:disabled)').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = btn.dataset.page;
+      if (p === 'first') currentPage = 1;
+      else if (p === 'prev') currentPage--;
+      else if (p === 'next') currentPage++;
+      else if (p === 'last') currentPage = totalPages;
+      else currentPage = parseInt(p);
+      render();
+    });
+  });
+}
+
+function openModal(id) {
+  const t = TRANSACTIONS.find(x => x.id === id);
+  document.getElementById('modal-title').textContent = `Transaction #${t.id} — ${t.journal}`;
+  document.getElementById('modal-meta').innerHTML = `
+    <div class="meta-cell"><div class="lbl">N° transaction</div><div class="val">#${t.id}</div></div>
+    <div class="meta-cell"><div class="lbl">Journal</div><div class="val">${t.journal}</div></div>
+    <div class="meta-cell"><div class="lbl">Période</div><div class="val">${MONTHS[t.month]} ${t.year}</div></div>
+    <div class="meta-cell"><div class="lbl">Statut</div><div class="val" style="font-family:var(--font)">${pill(t.status)}</div></div>
+    <div class="meta-cell"><div class="lbl">Lignes</div><div class="val">${t.lines.length}</div></div>
+  `;
+  document.getElementById('modal-lines-body').innerHTML = t.lines.map((l, i) => `
+    <tr>
+      <td class="center" style="font-family:var(--mono);font-size:11px;color:var(--ink3)">${String(i+1).padStart(2,'0')}</td>
+      <td style="color:var(--ink2);font-size:13px">${l.date}</td>
+      <td style="font-size:13px">${l.name}</td>
+      <td><span class="account-tag">${l.account}</span></td>
+      <td style="font-size:11px;color:var(--ink3);font-family:var(--mono)" title="${l.docref}">${l.docref}</td>
+      <td class="right">${l.debit > 0 ? '<span class="amount-d">'+fmt(l.debit)+' €</span>' : '<span class="amount-zero">—</span>'}</td>
+      <td class="right">${l.credit > 0 ? '<span class="amount-c">'+fmt(l.credit)+' €</span>' : '<span class="amount-zero">—</span>'}</td>
+    </tr>
+  `).join('');
+  document.getElementById('modal-footer').innerHTML = `
+    <div class="footer-total"><span class="lbl">Total débit</span><span class="val" style="color:var(--debit-color)">${fmt(t.total_debit)} €</span></div>
+    <div class="sep"></div>
+    <div class="footer-total"><span class="lbl">Total crédit</span><span class="val" style="color:var(--credit-color)">${fmt(t.total_credit)} €</span></div>
+    <div class="sep"></div>
+    <div class="footer-total"><span class="lbl">Balance</span><span class="val">${bal(t.total_debit - t.total_credit)}</span></div>
+  `;
+  document.getElementById('modal-backdrop').classList.add('open');
+}
+
+const closeModal = () => document.getElementById('modal-backdrop').classList.remove('open');
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-close-x').addEventListener('click', closeModal);
+document.getElementById('modal-backdrop').addEventListener('click', e => { if (e.target.id === 'modal-backdrop') closeModal(); });
+document.getElementById('search').addEventListener('input', () => { currentPage = 1; render(); });
+document.getElementById('filter-journal').addEventListener('change', () => { currentPage = 1; render(); });
+document.getElementById('filter-month').addEventListener('change', () => { currentPage = 1; render(); });
+document.getElementById('filter-status').addEventListener('change', () => { currentPage = 1; render(); });
+
+render();
+</script>
+</body>
+</html>

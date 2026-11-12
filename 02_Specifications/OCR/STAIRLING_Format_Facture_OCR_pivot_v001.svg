@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+<defs><marker id="a6B7280" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6B7280"/></marker><marker id="a1F4E79" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1F4E79"/></marker><marker id="aB45309" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#B45309"/></marker></defs>
+<rect width="1000" height="560" fill="#FFFFFF"/>
+<text x="20" y="34" font-family="DejaVu Sans" font-size="16" fill="#4B5563" font-weight="bold" text-anchor="start">SOURCES</text>
+<text x="108.39999999999999" y="34" font-family="DejaVu Sans" font-size="14" fill="#4B5563" font-weight="normal" text-anchor="start">(variables)</text>
+<text x="370" y="34" font-family="DejaVu Sans" font-size="16" fill="#1F4E79" font-weight="bold" text-anchor="start">PIVOT</text>
+<text x="436.0" y="34" font-family="DejaVu Sans" font-size="14" fill="#1F4E79" font-weight="normal" text-anchor="start">(stable)</text>
+<text x="700" y="34" font-family="DejaVu Sans" font-size="16" fill="#B45309" font-weight="bold" text-anchor="start">TRAITEMENTS</text>
+<text x="833.2" y="34" font-family="DejaVu Sans" font-size="14" fill="#B45309" font-weight="normal" text-anchor="start">(indépendants)</text>
+<rect x="20" y="60" width="250" height="70" rx="8" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.6"/>
+<text x="32" y="87" font-family="DejaVu Sans" font-size="14" fill="#111827" font-weight="bold" text-anchor="start">PDF des plateformes</text>
+<text x="32" y="109" font-family="DejaVu Sans" font-size="12.5" fill="#4B5563" font-weight="normal" text-anchor="start">Uber, Bolt, Heetch…</text>
+<path d="M270 95.0 C319.0 95.0, 319.0 300, 368 300" fill="none" stroke="#6B7280" stroke-width="1.8" marker-end="url(#a6B7280)"/>
+<text x="260" y="82" font-family="DejaVu Sans" font-size="10.5" fill="#6B7280" font-weight="bold" text-anchor="end">OCR</text>
+<rect x="20" y="148" width="250" height="70" rx="8" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.6"/>
+<text x="32" y="175" font-family="DejaVu Sans" font-size="14" fill="#111827" font-weight="bold" text-anchor="start">Tickets et reçus</text>
+<text x="32" y="197" font-family="DejaVu Sans" font-size="12.5" fill="#4B5563" font-weight="normal" text-anchor="start">carburant, péage…</text>
+<path d="M270 183.0 C319.0 183.0, 319.0 300, 368 300" fill="none" stroke="#6B7280" stroke-width="1.8" marker-end="url(#a6B7280)"/>
+<text x="260" y="170" font-family="DejaVu Sans" font-size="10.5" fill="#6B7280" font-weight="bold" text-anchor="end">OCR</text>
+<rect x="20" y="236" width="250" height="70" rx="8" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.6"/>
+<text x="32" y="263" font-family="DejaVu Sans" font-size="14" fill="#111827" font-weight="bold" text-anchor="start">Factur-X</text>
+<text x="32" y="285" font-family="DejaVu Sans" font-size="12.5" fill="#4B5563" font-weight="normal" text-anchor="start">XML CII embarqué dans le PDF</text>
+<path d="M270 271.0 C319.0 271.0, 319.0 300, 368 300" fill="none" stroke="#6B7280" stroke-width="1.8" marker-end="url(#a6B7280)"/>
+<text x="260" y="258" font-family="DejaVu Sans" font-size="10.5" fill="#6B7280" font-weight="bold" text-anchor="end">lecture XML</text>
+<rect x="20" y="324" width="250" height="70" rx="8" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.6"/>
+<text x="32" y="351" font-family="DejaVu Sans" font-size="14" fill="#111827" font-weight="bold" text-anchor="start">UBL / CII</text>
+<text x="32" y="373" font-family="DejaVu Sans" font-size="12.5" fill="#4B5563" font-weight="normal" text-anchor="start">flux de la PA (SuperPDP)</text>
+<path d="M270 359.0 C319.0 359.0, 319.0 300, 368 300" fill="none" stroke="#6B7280" stroke-width="1.8" marker-end="url(#a6B7280)"/>
+<text x="260" y="346" font-family="DejaVu Sans" font-size="10.5" fill="#6B7280" font-weight="bold" text-anchor="end">lecture XML</text>
+<rect x="20" y="412" width="250" height="70" rx="8" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.6"/>
+<text x="32" y="439" font-family="DejaVu Sans" font-size="14" fill="#111827" font-weight="bold" text-anchor="start">API des plateformes</text>
+<text x="32" y="461" font-family="DejaVu Sans" font-size="12.5" fill="#4B5563" font-weight="normal" text-anchor="start">données de courses</text>
+<path d="M270 447.0 C319.0 447.0, 319.0 300, 368 300" fill="none" stroke="#6B7280" stroke-width="1.8" marker-end="url(#a6B7280)"/>
+<text x="260" y="434" font-family="DejaVu Sans" font-size="10.5" fill="#6B7280" font-weight="bold" text-anchor="end">appel API</text>
+<rect x="370" y="150" width="290" height="300" rx="12" fill="#FFFFFF" stroke="#1F4E79" stroke-width="2.4"/>
+<path d="M370 162 a12 12 0 0 1 12 -12 h266 a12 12 0 0 1 12 12 v30 h-290 z" fill="#1F4E79"/>
+<text x="515.0" y="178" font-family="DejaVu Sans" font-size="15" fill="#FFFFFF" font-weight="bold" text-anchor="middle">Enveloppe STAIRLING</text>
+<rect x="386" y="208" width="258" height="46" rx="6" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.4"/>
+<text x="398" y="228" font-family="DejaVu Sans Mono" font-size="13.5" fill="#1F4E79" font-weight="bold" text-anchor="start">invoice</text>
+<text x="398" y="246" font-family="DejaVu Sans" font-size="12" fill="#374151" font-weight="normal" text-anchor="start">corps EN 16931 (BT / BG)</text>
+<rect x="386" y="266" width="258" height="46" rx="6" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.4"/>
+<text x="398" y="286" font-family="DejaVu Sans Mono" font-size="13.5" fill="#6B7280" font-weight="bold" text-anchor="start">extraction</text>
+<text x="398" y="304" font-family="DejaVu Sans" font-size="12" fill="#374151" font-weight="normal" text-anchor="start">comment la pièce a été lue</text>
+<rect x="386" y="324" width="258" height="46" rx="6" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.4"/>
+<text x="398" y="344" font-family="DejaVu Sans Mono" font-size="13.5" fill="#6B7280" font-weight="bold" text-anchor="start">validation</text>
+<text x="398" y="362" font-family="DejaVu Sans" font-size="12" fill="#374151" font-weight="normal" text-anchor="start">contrôles exécutés</text>
+<rect x="386" y="382" width="258" height="46" rx="6" fill="#FEF3E2" stroke="#B45309" stroke-width="1.4"/>
+<text x="398" y="402" font-family="DejaVu Sans Mono" font-size="13.5" fill="#B45309" font-weight="bold" text-anchor="start">extensions</text>
+<text x="398" y="420" font-family="DejaVu Sans" font-size="12" fill="#374151" font-weight="normal" text-anchor="start">déductions STAIRLING</text>
+<rect x="700" y="95" width="280" height="70" rx="8" fill="#FEF3E2" stroke="#B45309" stroke-width="1.6"/>
+<text x="712" y="122" font-family="DejaVu Sans" font-size="14" fill="#111827" font-weight="bold" text-anchor="start">Écritures comptables</text>
+<text x="712" y="144" font-family="DejaVu Sans" font-size="12.5" fill="#7C2D12" font-weight="normal" text-anchor="start">règles de comptabilisation</text>
+<path d="M662 300 C680.0 300, 680.0 130.0, 698 130.0" fill="none" stroke="#B45309" stroke-width="1.8" marker-end="url(#aB45309)"/>
+<rect x="700" y="187" width="280" height="70" rx="8" fill="#FEF3E2" stroke="#B45309" stroke-width="1.6"/>
+<text x="712" y="214" font-family="DejaVu Sans" font-size="14" fill="#111827" font-weight="bold" text-anchor="start">E-reporting</text>
+<text x="712" y="236" font-family="DejaVu Sans" font-size="12.5" fill="#7C2D12" font-weight="normal" text-anchor="start">B2C, international</text>
+<path d="M662 300 C680.0 300, 680.0 222.0, 698 222.0" fill="none" stroke="#B45309" stroke-width="1.8" marker-end="url(#aB45309)"/>
+<rect x="700" y="279" width="280" height="70" rx="8" fill="#FEF3E2" stroke="#B45309" stroke-width="1.6"/>
+<text x="712" y="306" font-family="DejaVu Sans" font-size="14" fill="#111827" font-weight="bold" text-anchor="start">Rapprochement bancaire</text>
+<text x="712" y="328" font-family="DejaVu Sans" font-size="12.5" fill="#7C2D12" font-weight="normal" text-anchor="start">paiements ↔ pièces</text>
+<path d="M662 300 C680.0 300, 680.0 314.0, 698 314.0" fill="none" stroke="#B45309" stroke-width="1.8" marker-end="url(#aB45309)"/>
+<rect x="700" y="371" width="280" height="70" rx="8" fill="#FEF3E2" stroke="#B45309" stroke-width="1.6"/>
+<text x="712" y="398" font-family="DejaVu Sans" font-size="14" fill="#111827" font-weight="bold" text-anchor="start">Tableaux de bord</text>
+<text x="712" y="420" font-family="DejaVu Sans" font-size="12.5" fill="#7C2D12" font-weight="normal" text-anchor="start">par entrepreneur-salarié</text>
+<path d="M662 300 C680.0 300, 680.0 406.0, 698 406.0" fill="none" stroke="#B45309" stroke-width="1.8" marker-end="url(#aB45309)"/>
+<text x="20" y="525" font-family="DejaVu Sans" font-size="12.5" fill="#4B5563" font-weight="normal" text-anchor="start">Adaptateurs d’entrée : seuls à connaître</text>
+<text x="20" y="543" font-family="DejaVu Sans" font-size="12.5" fill="#4B5563" font-weight="normal" text-anchor="start">la forme des sources.</text>
+<text x="515.0" y="480" font-family="DejaVu Sans" font-size="12.5" fill="#1F4E79" font-weight="bold" text-anchor="middle">Interface unique et versionnée</text>
+<text x="700" y="525" font-family="DejaVu Sans" font-size="12.5" fill="#7C2D12" font-weight="normal" text-anchor="start">Ne lisent que la norme et les extensions ;</text>
+<text x="700" y="543" font-family="DejaVu Sans" font-size="12.5" fill="#7C2D12" font-weight="normal" text-anchor="start">règles stockées comme des données.</text>
+</svg>

@@ -1,0 +1,50 @@
+{
+  "seq": 98342,
+  "event_id": "c3a9…",
+  "stream_id": "ES-0042",
+  "stream_version": 37,
+  "event_type": "FACTURE_ACHAT",
+  "schema_version": 1,
+  "occurred_at": "2026-10-15T00:00:00Z",
+  "recorded_at": "2026-10-15T18:42:05Z",
+  "document_id": "5bd59e25-5327-42c0-854b-c23585f2aa8f",
+  "causation_id": null,
+  "actor": "ocr-engine",
+  "payload": {
+    "numeric_encoding": { "representation": "scaled_integer", "scale": 2 },
+    "statut": "RECU",
+    "number": "T-0482",
+    "issue_date": "2026-10-15",
+    "type_code": "380",
+    "previous_document_id": "91dcf6ab-9b33-41d6-bbda-5930ee798e31",
+    "payment_means_code": "48",
+    "seller": {
+      "name": "Station Exemple SAS",
+      "siren": "123456782",
+      "siret": "12345678200028",
+      "vat_identifier": "FR11123456782",
+      "address_line1": "1 avenue de l'Exemple",
+      "post_code": "93200",
+      "city": "Saint-Denis",
+      "country_code": "FR"
+    },
+    "lines": [
+      { "line_id": "1", "name": "Gazole B7", "net_amount": 5000, "vat_category_code": "S", "vat_rate": 2000, "category": "CARBURANT" },
+      { "line_id": "2", "name": "Lave-glace 5 L", "net_amount": 575, "vat_category_code": "S", "vat_rate": 2000, "category": "ENTRETIEN_REPARATION" },
+      { "line_id": "3", "name": "Eau minérale pack 6 x 50 cl", "net_amount": 400, "vat_category_code": "S", "vat_rate": 550, "category": "FOURNITURES_CLIENT" }
+    ],
+    "vat_break_down": [
+      { "vat_category_code": "S", "vat_rate": 2000, "taxable_amount": 5575, "tax_amount": 1115 },
+      { "vat_category_code": "S", "vat_rate": 550, "taxable_amount": 400, "tax_amount": 22 }
+    ],
+    "totals": {
+      "sum_invoice_lines_amount": 5975,
+      "total_without_vat": 5975,
+      "total_vat_amount": 1137,
+      "total_with_vat": 7112,
+      "paid_amount": 7112,
+      "amount_due_for_payment": 0
+    },
+    "sha256": "bce49cf4b2f2f78918b9d0f70e21afc20f8547378f589b584b5f3aebce5777bb"
+  }
+}

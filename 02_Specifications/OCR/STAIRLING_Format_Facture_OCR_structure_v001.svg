@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1290" viewBox="0 0 1000 1290">
+<defs><marker id="ah1F4E79" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1F4E79"/></marker><marker id="ahB45309" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#B45309"/></marker><marker id="ah6B7280" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6B7280"/></marker></defs>
+<rect width="1000" height="1290" fill="#FFFFFF"/>
+<rect x="10" y="10" width="980" height="1206" rx="12" fill="#FFFFFF" stroke="#6B7280" stroke-width="2.2"/>
+<text x="28" y="40" font-family="DejaVu Sans" font-size="18" fill="#111827" font-weight="bold" text-anchor="start">Document d’échange STAIRLING (enveloppe)</text>
+<rect x="28" y="54" width="271.6" height="28" rx="6" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.2"/>
+<text x="38" y="73" font-family="DejaVu Sans Mono" font-size="12" fill="#111827" font-weight="bold" text-anchor="start">format</text>
+<text x="90.4" y="73" font-family="DejaVu Sans" font-size="12" fill="#374151" font-weight="normal" text-anchor="start">urn:stairling:ocr-invoice</text>
+<rect x="309.6" y="54" width="180.4" height="28" rx="6" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.2"/>
+<text x="319.6" y="73" font-family="DejaVu Sans Mono" font-size="12" fill="#111827" font-weight="bold" text-anchor="start">format_version</text>
+<text x="431.20000000000005" y="73" font-family="DejaVu Sans" font-size="12" fill="#374151" font-weight="normal" text-anchor="start">1.0.0</text>
+<rect x="500.0" y="54" width="226.0" height="28" rx="6" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.2"/>
+<text x="510.0" y="73" font-family="DejaVu Sans Mono" font-size="12" fill="#111827" font-weight="bold" text-anchor="start">numeric_encoding</text>
+<text x="636.4" y="73" font-family="DejaVu Sans" font-size="12" fill="#374151" font-weight="normal" text-anchor="start">échelle 2</text>
+<rect x="736.0" y="54" width="150.0" height="28" rx="6" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.2"/>
+<text x="746.0" y="73" font-family="DejaVu Sans Mono" font-size="12" fill="#111827" font-weight="bold" text-anchor="start">document_id</text>
+<text x="835.4" y="73" font-family="DejaVu Sans" font-size="12" fill="#374151" font-weight="normal" text-anchor="start">UUID</text>
+<rect x="28" y="100" width="612" height="1096" rx="10" fill="#FFFFFF" stroke="#1F4E79" stroke-width="2.2"/>
+<text x="42" y="126" font-family="DejaVu Sans Mono" font-size="17" fill="#1F4E79" font-weight="bold" text-anchor="start">invoice</text>
+<text x="128" y="126" font-family="DejaVu Sans" font-size="13" fill="#1F4E79" font-weight="normal" text-anchor="start">— la facture, modèle EN 16931 : ce qui est lu sur la pièce</text>
+<rect x="42" y="140" width="584" height="122" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<path d="M42 148 a8 8 0 0 1 8 -8 h568 a8 8 0 0 1 8 8 v18 h-584 z" fill="#1F4E79"/>
+<text x="52" y="158.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">en-tête</text>
+<text x="616" y="158.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">racine</text>
+<text x="52" y="186" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Numéro</text>
+<text x="297" y="186" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-1</text>
+<text x="52" y="205" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Date d’émission</text>
+<text x="297" y="205" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-2</text>
+<text x="52" y="224" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Type : 380, 381, 389…</text>
+<text x="297" y="224" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-3</text>
+<text x="52" y="243" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Devise</text>
+<text x="297" y="243" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-5</text>
+<text x="322" y="186" font-family="DejaVu Sans Mono" font-size="12" fill="#1F2937" font-weight="normal" text-anchor="start">process_control : profil, cadre</text>
+<text x="616" y="186" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BG-2</text>
+<text x="322" y="205" font-family="DejaVu Sans Mono" font-size="12" fill="#1F2937" font-weight="normal" text-anchor="start">invoicing_period</text>
+<text x="616" y="205" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BG-14</text>
+<text x="322" y="224" font-family="DejaVu Sans Mono" font-size="12" fill="#1F2937" font-weight="normal" text-anchor="start">notes : PMD, PMT, AAB  [0..n]</text>
+<text x="616" y="224" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BG-1</text>
+<text x="322" y="243" font-family="DejaVu Sans Mono" font-size="12" fill="#1F2937" font-weight="normal" text-anchor="start">preceding_invoice_references [0..n]</text>
+<text x="616" y="243" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BG-3</text>
+<rect x="42" y="290" width="186.66666666666666" height="150" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<path d="M42 298 a8 8 0 0 1 8 -8 h170.66666666666666 a8 8 0 0 1 8 8 v18 h-186.66666666666666 z" fill="#1F4E79"/>
+<text x="52" y="308.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">seller</text>
+<text x="218.66666666666666" y="308.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">BG-4</text>
+<text x="52" y="336" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Raison sociale</text>
+<text x="218.66666666666666" y="336" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-27</text>
+<text x="52" y="355" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">SIREN</text>
+<text x="218.66666666666666" y="355" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-30</text>
+<text x="52" y="374" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">SIRET</text>
+<text x="218.66666666666666" y="374" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-29</text>
+<text x="52" y="393" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">N° TVA</text>
+<text x="218.66666666666666" y="393" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-31</text>
+<text x="52" y="412" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Adresse électr.</text>
+<text x="218.66666666666666" y="412" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-34</text>
+<text x="52" y="431" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Adresse postale</text>
+<text x="218.66666666666666" y="431" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BG-5</text>
+<rect x="240.66666666666666" y="290" width="186.66666666666666" height="150" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<path d="M240.66666666666666 298 a8 8 0 0 1 8 -8 h170.66666666666666 a8 8 0 0 1 8 8 v18 h-186.66666666666666 z" fill="#1F4E79"/>
+<text x="250.66666666666666" y="308.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">buyer</text>
+<text x="417.3333333333333" y="308.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">BG-7</text>
+<text x="250.66666666666666" y="336" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Nom</text>
+<text x="417.3333333333333" y="336" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-44</text>
+<text x="250.66666666666666" y="355" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">SIREN</text>
+<text x="417.3333333333333" y="355" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-47</text>
+<text x="250.66666666666666" y="374" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">N° TVA</text>
+<text x="417.3333333333333" y="374" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-48</text>
+<text x="250.66666666666666" y="393" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Adresse électr.</text>
+<text x="417.3333333333333" y="393" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-49</text>
+<text x="250.66666666666666" y="412" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Adresse postale</text>
+<text x="417.3333333333333" y="412" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BG-8</text>
+<rect x="439.3333333333333" y="290" width="186.66666666666666" height="150" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6" stroke-dasharray="7 5"/>
+<path d="M439.3333333333333 298 a8 8 0 0 1 8 -8 h170.66666666666666 a8 8 0 0 1 8 8 v18 h-186.66666666666666 z" fill="#1F4E79"/>
+<text x="449.3333333333333" y="308.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">third_party_biller</text>
+<text x="449.3333333333333" y="336" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Tiers facturant</text>
+<text x="449.3333333333333" y="355" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">(mandataire, ex. Uber)</text>
+<text x="449.3333333333333" y="374" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">payer : payeur</text>
+<text x="449.3333333333333" y="393" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Extensions FR</text>
+<text x="616.0" y="393" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">EXT-FR-FE</text>
+<rect x="42" y="470" width="584" height="230" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<path d="M42 478 a8 8 0 0 1 8 -8 h568 a8 8 0 0 1 8 8 v18 h-584 z" fill="#1F4E79"/>
+<text x="52" y="488.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">lines</text>
+<text x="616" y="488.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">BG-25  [1..n]</text>
+<text x="52" y="518" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Identifiant de ligne</text>
+<text x="297" y="518" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-126</text>
+<text x="52" y="537" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Quantité + unité</text>
+<text x="297" y="537" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-129/130</text>
+<text x="52" y="556" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Montant net HT</text>
+<text x="297" y="556" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-131</text>
+<rect x="52.0" y="588" width="180.0" height="98" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<path d="M52.0 596 a8 8 0 0 1 8 -8 h164.0 a8 8 0 0 1 8 8 v18 h-180.0 z" fill="#1F4E79"/>
+<text x="62.0" y="606.5" font-family="DejaVu Sans Mono" font-size="11.5" fill="#FFFFFF" font-weight="bold" text-anchor="start">price_details</text>
+<text x="222.0" y="606.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">BG-29</text>
+<text x="62.0" y="634" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Prix unitaire net</text>
+<text x="222.0" y="634" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-146</text>
+<rect x="244.0" y="588" width="180.0" height="98" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<path d="M244.0 596 a8 8 0 0 1 8 -8 h164.0 a8 8 0 0 1 8 8 v18 h-180.0 z" fill="#1F4E79"/>
+<text x="254.0" y="606.5" font-family="DejaVu Sans Mono" font-size="11.5" fill="#FFFFFF" font-weight="bold" text-anchor="start">vat_information</text>
+<text x="414.0" y="606.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">BG-30</text>
+<text x="254.0" y="634" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Catégorie TVA</text>
+<text x="414.0" y="634" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-151</text>
+<text x="254.0" y="653" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Taux</text>
+<text x="414.0" y="653" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-152</text>
+<rect x="436.0" y="588" width="180.0" height="98" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<path d="M436.0 596 a8 8 0 0 1 8 -8 h164.0 a8 8 0 0 1 8 8 v18 h-180.0 z" fill="#1F4E79"/>
+<text x="446.0" y="606.5" font-family="DejaVu Sans Mono" font-size="11.5" fill="#FFFFFF" font-weight="bold" text-anchor="start">item_information</text>
+<text x="606.0" y="606.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">BG-31</text>
+<text x="446.0" y="634" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Désignation</text>
+<text x="606.0" y="634" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-153</text>
+<line x1="334.0" y1="700" x2="334.0" y2="762" stroke="#1F4E79" stroke-width="1.8" marker-end="url(#ah1F4E79)"/>
+<text x="344.0" y="722" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="start">Σ des lignes, par catégorie et taux</text>
+<rect x="42" y="765" width="584" height="110" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<path d="M42 773 a8 8 0 0 1 8 -8 h568 a8 8 0 0 1 8 8 v18 h-584 z" fill="#1F4E79"/>
+<text x="52" y="783.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">vat_break_down</text>
+<text x="616" y="783.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">BG-23  [1..n]</text>
+<text x="52" y="811" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Catégorie de TVA (S, AE, K, E, Z, O…)</text>
+<text x="616" y="811" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-118</text>
+<text x="52" y="830" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Taux</text>
+<text x="616" y="830" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-119</text>
+<text x="52" y="849" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Base imposable  ·  Montant de TVA</text>
+<text x="616" y="849" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-116 · BT-117</text>
+<line x1="334.0" y1="875" x2="334.0" y2="917" stroke="#1F4E79" stroke-width="1.8" marker-end="url(#ah1F4E79)"/>
+<text x="344.0" y="900" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="start">Σ BT-116 = total HT  ·  Σ BT-117 = total TVA</text>
+<rect x="42" y="920" width="584" height="150" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<path d="M42 928 a8 8 0 0 1 8 -8 h568 a8 8 0 0 1 8 8 v18 h-584 z" fill="#1F4E79"/>
+<text x="52" y="938.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">totals</text>
+<text x="616" y="938.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">BG-22</text>
+<text x="52" y="966" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Somme des lignes</text>
+<text x="616" y="966" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-106</text>
+<text x="52" y="985" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Total HT  ·  Total TVA</text>
+<text x="616" y="985" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-109 · BT-110</text>
+<text x="52" y="1004" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Total TTC</text>
+<text x="616" y="1004" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-112</text>
+<text x="52" y="1023" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Déjà payé</text>
+<text x="616" y="1023" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-113</text>
+<text x="52" y="1042" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Reste à payer</text>
+<text x="616" y="1042" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-115</text>
+<rect x="42" y="1090" width="286.0" height="90" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6" stroke-dasharray="7 5"/>
+<path d="M42 1098 a8 8 0 0 1 8 -8 h270.0 a8 8 0 0 1 8 8 v18 h-286.0 z" fill="#1F4E79"/>
+<text x="52" y="1108.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">payment_instructions</text>
+<text x="318.0" y="1108.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">BG-16</text>
+<text x="52" y="1136" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Moyen de paiement</text>
+<text x="318.0" y="1136" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BT-81</text>
+<text x="52" y="1155" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Virement : IBAN</text>
+<text x="318.0" y="1155" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BG-17</text>
+<rect x="340.0" y="1090" width="286.0" height="90" rx="8" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6" stroke-dasharray="7 5"/>
+<path d="M340.0 1098 a8 8 0 0 1 8 -8 h270.0 a8 8 0 0 1 8 8 v18 h-286.0 z" fill="#1F4E79"/>
+<text x="350.0" y="1108.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">allowances / charges</text>
+<text x="616.0" y="1108.5" font-family="DejaVu Sans" font-size="12" fill="#FFFFFF" font-weight="bold" text-anchor="end">BG-20/21</text>
+<text x="350.0" y="1136" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Remises du document</text>
+<text x="616.0" y="1136" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BG-20</text>
+<text x="350.0" y="1155" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Frais du document</text>
+<text x="616.0" y="1155" font-family="DejaVu Sans" font-size="11.5" fill="#1F4E79" font-weight="bold" text-anchor="end">BG-21</text>
+<rect x="660" y="100" width="312" height="250" rx="8" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.6"/>
+<path d="M660 108 a8 8 0 0 1 8 -8 h296 a8 8 0 0 1 8 8 v18 h-312 z" fill="#4B5563"/>
+<text x="670" y="118.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">extraction</text>
+<text x="670" y="146" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Comment la pièce a été lue</text>
+<text x="670" y="165" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">source : fichier, sha256</text>
+<text x="670" y="184" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">engine : moteur OCR, version</text>
+<text x="670" y="203" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">extracted_at</text>
+<text x="670" y="222" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">fields[] :</text>
+<text x="686" y="241" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">· pointer → un champ (RFC 6901)</text>
+<text x="686" y="260" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">· status : read, inferred…</text>
+<text x="686" y="279" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">· confidence · bbox · raw</text>
+<rect x="660" y="368" width="312" height="132" rx="8" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.6" stroke-dasharray="7 5"/>
+<path d="M660 376 a8 8 0 0 1 8 -8 h296 a8 8 0 0 1 8 8 v18 h-312 z" fill="#4B5563"/>
+<text x="670" y="386.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">validation</text>
+<text x="670" y="414" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Contrôles exécutés</text>
+<text x="670" y="433" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">status : ok, warning, error</text>
+<text x="670" y="452" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">checks[] : BR-* (EN 16931),</text>
+<text x="670" y="471" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">BR-FR-* (France), STAIRLING-*</text>
+<rect x="660" y="518" width="312" height="678" rx="10" fill="#FFFFFF" stroke="#B45309" stroke-width="2.2"/>
+<text x="674" y="544" font-family="DejaVu Sans Mono" font-size="17" fill="#B45309" font-weight="bold" text-anchor="start">extensions</text>
+<text x="674" y="564" font-family="DejaVu Sans" font-size="12.5" fill="#B45309" font-weight="normal" text-anchor="start">ce qui est déduit par STAIRLING</text>
+<rect x="672" y="580" width="288" height="112" rx="8" fill="#FEF3E2" stroke="#B45309" stroke-width="1.6"/>
+<path d="M672 588 a8 8 0 0 1 8 -8 h272 a8 8 0 0 1 8 8 v18 h-288 z" fill="#B45309"/>
+<text x="682" y="598.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">stairling:routing</text>
+<text x="682" y="626" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">tenant_id</text>
+<text x="682" y="645" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">direction : sale | purchase</text>
+<text x="682" y="664" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">worker_id (CESA)</text>
+<rect x="672" y="708" width="288" height="150" rx="8" fill="#FEF3E2" stroke="#B45309" stroke-width="1.6" stroke-dasharray="7 5"/>
+<path d="M672 716 a8 8 0 0 1 8 -8 h272 a8 8 0 0 1 8 8 v18 h-288 z" fill="#B45309"/>
+<text x="682" y="726.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">stairling:platform</text>
+<text x="682" y="754" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">platform_id</text>
+<text x="682" y="773" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">platform_driver_id</text>
+<text x="682" y="792" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">paid_by</text>
+<text x="682" y="811" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">tips[].amount_cents</text>
+<text x="682" y="830" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">total_collected_cents</text>
+<rect x="672" y="874" width="288" height="132" rx="8" fill="#FEF3E2" stroke="#B45309" stroke-width="1.6"/>
+<path d="M672 882 a8 8 0 0 1 8 -8 h272 a8 8 0 0 1 8 8 v18 h-288 z" fill="#B45309"/>
+<text x="682" y="892.5" font-family="DejaVu Sans Mono" font-size="13" fill="#FFFFFF" font-weight="bold" text-anchor="start">stairling:classification</text>
+<text x="682" y="920" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">list_version</text>
+<text x="682" y="939" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">lines[] :</text>
+<text x="698" y="958" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">· line → BT-126</text>
+<text x="698" y="977" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">· category : COURSE, CARBURANT…</text>
+<text x="676" y="1038" font-family="DejaVu Sans" font-size="12" fill="#7C2D12" font-weight="normal" text-anchor="start">Montants des extensions : entiers,</text>
+<text x="676" y="1056" font-family="DejaVu Sans" font-size="12" fill="#7C2D12" font-weight="normal" text-anchor="start">suffixes _cents (×100) et _bps.</text>
+<text x="676" y="1084" font-family="DejaVu Sans" font-size="12" fill="#7C2D12" font-weight="normal" text-anchor="start">Un lecteur ignore toute extension</text>
+<text x="676" y="1102" font-family="DejaVu Sans" font-size="12" fill="#7C2D12" font-weight="normal" text-anchor="start">qu’il ne connaît pas.</text>
+<polyline points="672,958 650,958 650,530 628,530" fill="none" stroke="#B45309" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#ahB45309)"/>
+<polyline points="660,236 650,236 650,200 628,200" fill="none" stroke="#6B7280" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#ah6B7280)"/>
+<rect x="28" y="1226" width="34" height="20" rx="4" fill="#EAF1F8" stroke="#1F4E79" stroke-width="1.6"/>
+<text x="70" y="1241" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Norme EN 16931 (BT = terme, BG = groupe)</text>
+<rect x="360" y="1226" width="34" height="20" rx="4" fill="#FEF3E2" stroke="#B45309" stroke-width="1.6"/>
+<text x="402" y="1241" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Extension STAIRLING</text>
+<rect x="560" y="1226" width="34" height="20" rx="4" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.6"/>
+<text x="602" y="1241" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Métadonnées de lecture</text>
+<rect x="790" y="1226" width="34" height="20" rx="4" fill="#FFFFFF" stroke="#6B7280" stroke-width="1.6" stroke-dasharray="7 5"/>
+<text x="832" y="1241" font-family="DejaVu Sans" font-size="12.5" fill="#1F2937" font-weight="normal" text-anchor="start">Facultatif</text>
+<text x="28" y="1274" font-family="DejaVu Sans" font-size="12" fill="#4B5563" font-weight="normal" text-anchor="start">[1..n] : au moins une occurrence  ·  [0..n] : facultatif, répétable  ·  flèches pleines : calculs ; pointillées : références</text>
+</svg>

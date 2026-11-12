@@ -1,0 +1,23 @@
+Compte;Libelle;Debit;Credit;Solde_Debiteur;Solde_Crediteur
+41100;Racine 41100;5129637.62;316715.89;4812921.73;0.00
+44520;TVA due - autoliquidation intracommunautaire;0.00;31709.68;0.00;31709.68
+44560;Racine 44560;26358.30;0.00;26358.30;0.00
+44566;TVA deductible - autoliquidation intracommunautaire;31709.68;0.00;31709.68;0.00
+44571;Racine 44571;0.00;465095.63;0.00;465095.63
+62261;Commission plateforme Uber;125227.93;0.00;125227.93;0.00
+62262;Commission plateforme Bolt;32268.43;0.00;32268.43;0.00
+62263;Commission plateforme Heetch;4607.17;0.00;4607.17;0.00
+62264;Commission plateforme FreeNow;1052.01;0.00;1052.01;0.00
+62266;Commission plateforme LeCab;1309.83;0.00;1309.83;0.00
+62267;Commission Fleet Partners;104846.52;0.00;104846.52;0.00
+62268;Commission plateforme Allocab;21045.70;0.00;21045.70;0.00
+70611;CA chauffeurs Uber 10 %;0.00;2129299.89;0.00;2129299.89
+70621;CA chauffeurs Bolt 10 %;0.00;460324.87;0.00;460324.87
+70631;CA chauffeurs Heetch 10 %;0.00;102498.22;0.00;102498.22
+70641;CA chauffeurs FreeNow 10 %;0.00;15071.88;0.00;15071.88
+70661;CA chauffeurs LeCab 10 %;0.00;22673.07;0.00;22673.07
+70662;CA chauffeurs LeCab 20 %;0.00;105.09;0.00;105.09
+70671;CA sous-traitance Fleet Partners 10 %;0.00;1699958.97;0.00;1699958.97
+70681;CA chauffeurs Allocab 10 %;0.00;227899.77;0.00;227899.77
+70682;CA chauffeurs Allocab 20 %;0.00;6445.71;0.00;6445.71
+70884;Pourboires chauffeurs FreeNow;0.00;264.52;0.00;264.52

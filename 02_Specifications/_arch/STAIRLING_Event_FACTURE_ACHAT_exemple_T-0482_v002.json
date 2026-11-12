@@ -1,0 +1,82 @@
+{
+  "seq": 98318,
+  "event_id": "ece6efd1-8c64-56b4-9562-a1e1f103a797",
+  "tenant_id": "stairling-union",
+  "stream_id": "ES-0042",
+  "stream_version": 36,
+  "event_type": "FACTURE_ACHAT",
+  "schema_version": 2,
+  "occurred_at": "2026-10-15T00:00:00Z",
+  "recorded_at": "2026-10-15T18:42:05Z",
+  "document_id": "91dcf6ab-9b33-41d6-bbda-5930ee798e31",
+  "idempotency_key": "stairling-union|123456782|T-0482|380",
+  "correlation_id": "c75fcb6f-075a-5d4e-b30f-18b705319339",
+  "causation_id": null,
+  "actor": "ocr-engine",
+  "integrity": {
+    "canonicalization": "JCS-RFC8785",
+    "algorithm": "sha256",
+    "chain_scope": "tenant",
+    "payload_hash": "aec512cc3063c8af0a5f9e5aa0cdbc09b93e50b6c4a855254cc25986743b6996",
+    "prev_hash": "ea6ce575c56fd47821fdbc94cc03176de00318d4a74d18e03d1bcbe85ed9d5fe",
+    "hash": "dd7c49974b8d07a66632cc5be7015c5d87fd78cd7865abe6bf0b7b50c12e4f56"
+  },
+  "payload": {
+    "numeric_encoding": {
+      "representation": "scaled_integer",
+      "scale": 2
+    },
+    "statut": "RECU",
+    "number": "T-0482",
+    "issue_date": "2026-10-15",
+    "type_code": "380",
+    "preceding_invoice_number": null,
+    "preceding_invoice_date": null,
+    "delivery_date": "2026-10-15",
+    "payment_means_code": "48",
+    "rattachement": {
+      "entrepreneur_id": "ES-0042",
+      "person_uuid": "3d9b7f02-5c1e-4a8b-b6e2-91f0c4a7d218",
+      "driver_platform_id": null,
+      "link_method": "depot_ocr"
+    },
+    "principal": null,
+    "seller": {
+      "name": "Station Exemple SAS",
+      "siren": "123456782",
+      "siret": "12345678200028",
+      "vat_identifier": "FR11123456782",
+      "address_line1": "1 avenue de l'Exemple",
+      "post_code": "93200",
+      "city": "Saint-Denis",
+      "country_code": "FR"
+    },
+    "lines": [
+      {
+        "line_id": "1",
+        "name": "Gazole B7",
+        "net_amount": 5000,
+        "vat_category_code": "S",
+        "vat_rate": 2000,
+        "category": "CARBURANT"
+      }
+    ],
+    "vat_break_down": [
+      {
+        "vat_category_code": "S",
+        "vat_rate": 2000,
+        "taxable_amount": 5000,
+        "tax_amount": 1000
+      }
+    ],
+    "totals": {
+      "sum_invoice_lines_amount": 5000,
+      "total_without_vat": 5000,
+      "total_vat_amount": 1000,
+      "total_with_vat": 6000,
+      "paid_amount": 6000,
+      "amount_due_for_payment": 0
+    },
+    "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+  }
+}

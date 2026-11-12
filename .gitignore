@@ -1,0 +1,12 @@
+# Fichiers de verrou (LibreOffice / MS Office)
+.~lock.*#
+~$*
+*.lock
+.lock
+*.lck
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Dépendances Node (réinstallables via npm install)
+node_modules/

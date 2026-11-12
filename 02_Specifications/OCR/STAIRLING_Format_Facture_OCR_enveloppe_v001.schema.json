@@ -1,0 +1,488 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:stairling:ocr-invoice:1.0.0",
+  "title": "STAIRLING — Enveloppe d'échange de facture issue d'OCR",
+  "description": "Enveloppe v1.0.0. Le corps 'invoice' suit le modèle sémantique EN 16931 dans la sérialisation en_invoice ; il est validé par son propre schéma (STAIRLING_Format_Facture_OCR_invoice_v001.schema.json, où chaque champ porte son identifiant BT/BG), référencé et non recopié ici.",
+  "type": "object",
+  "required": [
+    "format",
+    "format_version",
+    "document_id",
+    "invoice",
+    "extraction"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "format": {
+      "const": "urn:stairling:ocr-invoice"
+    },
+    "format_version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+\\.[0-9]+$",
+      "description": "Version sémantique. Un lecteur 1.x accepte toute 1.y."
+    },
+    "numeric_encoding": {
+      "$ref": "#/$defs/numeric_encoding"
+    },
+    "document_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Identifiant unique de CE document d'échange (pas de la facture)."
+    },
+    "invoice": {
+      "$ref": "urn:stairling:ocr-invoice:invoice:1.0.0",
+      "description": "Corps EN 16931 (sérialisation en_invoice). Aucune donnée propre à STAIRLING."
+    },
+    "extraction": {
+      "$ref": "#/$defs/extraction"
+    },
+    "validation": {
+      "$ref": "#/$defs/validation"
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Données hors norme. Chaque clé est préfixée par un espace de noms ('stairling:…'). Un lecteur ignore les clés qu'il ne connaît pas.",
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9-]*:[a-z][a-z0-9_-]*$"
+      },
+      "properties": {
+        "stairling:routing": {
+          "$ref": "#/$defs/stairling_routing"
+        },
+        "stairling:platform": {
+          "$ref": "#/$defs/stairling_platform"
+        },
+        "stairling:classification": {
+          "$ref": "#/$defs/stairling_classification"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/extension_object"
+      }
+    }
+  },
+  "if": {
+    "required": [
+      "numeric_encoding"
+    ],
+    "properties": {
+      "numeric_encoding": {
+        "properties": {
+          "representation": {
+            "const": "scaled_integer"
+          }
+        }
+      }
+    }
+  },
+  "else": {
+    "properties": {
+      "invoice": {
+        "$ref": "#/$defs/invoice_decimal"
+      }
+    }
+  },
+  "$defs": {
+    "numeric_encoding": {
+      "type": "object",
+      "description": "Écriture des nombres du bloc invoice (montants, prix, taux, quantités). scaled_integer : entier = valeur × 10^scale, échelle 2 quelle que soit la devise ; une valeur plus précise reste une chaîne décimale. decimal : chaînes décimales de la norme. Absent = decimal.",
+      "required": [
+        "representation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "representation": {
+          "enum": [
+            "scaled_integer",
+            "decimal"
+          ]
+        },
+        "scale": {
+          "const": 2
+        }
+      },
+      "if": {
+        "properties": {
+          "representation": {
+            "const": "scaled_integer"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "scale"
+        ]
+      },
+      "else": {
+        "not": {
+          "required": [
+            "scale"
+          ]
+        }
+      }
+    },
+    "extension_object": {
+      "type": "object",
+      "description": "Conventions numériques des extensions, indépendantes de numeric_encoding : un montant est un entier à l'échelle 2 quelle que soit la devise (montant × 100, suffixe _cents), un taux un entier en points de base (taux × 100, suffixe _bps). Elles s'appliquent à toute profondeur.",
+      "patternProperties": {
+        "_cents$": {
+          "type": "integer"
+        },
+        "_bps$": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/extension_object"
+          },
+          {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/extension_object"
+                },
+                {
+                  "not": {
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "not": {
+              "type": [
+                "object",
+                "array"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "stairling_routing": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/extension_object"
+        }
+      ],
+      "required": [
+        "tenant_id",
+        "direction"
+      ],
+      "properties": {
+        "tenant_id": {
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "sale",
+            "purchase"
+          ]
+        },
+        "worker_id": {
+          "type": "string",
+          "description": "Identifiant interne STAIRLING de l’entrepreneur-salarié (contrat CESA) auquel la pièce est rattachée, vente comme achat. Absent = frais de structure de la coopérative. Déduit, jamais lu sur la pièce."
+        }
+      }
+    },
+    "stairling_platform": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/extension_object"
+        }
+      ],
+      "required": [
+        "platform_id"
+      ],
+      "properties": {
+        "platform_id": {
+          "type": "string"
+        },
+        "activity_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Identifiants des courses (activités) couvertes par la pièce, chez la plateforme. Tableau : un relevé peut couvrir plusieurs courses."
+        },
+        "paid_by": {
+          "enum": [
+            "platform",
+            "customer"
+          ]
+        },
+        "tips": {
+          "type": "array",
+          "description": "Pourboires lus sur la pièce. Jamais dans le bloc invoice.",
+          "items": {
+            "type": "object",
+            "required": [
+              "amount_cents",
+              "currency_code"
+            ],
+            "properties": {
+              "amount_cents": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "currency_code": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "label": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "total_collected_cents": {
+          "type": "integer",
+          "description": "Total encaissé imprimé sur la pièce, pourboires compris, dans la devise de la facture."
+        },
+        "platform_driver_id": {
+          "type": "string",
+          "description": "Identifiant du chauffeur chez la plateforme, tel qu’imprimé sur la pièce. Le passage vers worker_id se fait dans le SI, pas dans le document."
+        }
+      }
+    },
+    "extraction": {
+      "type": "object",
+      "required": [
+        "source",
+        "engine",
+        "extracted_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "object",
+          "required": [
+            "media_type",
+            "sha256"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "file_name": {
+              "type": "string"
+            },
+            "media_type": {
+              "type": "string",
+              "description": "Type MIME (RFC 6838)."
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "page_count": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "engine": {
+          "type": "object",
+          "required": [
+            "name",
+            "version"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          }
+        },
+        "extracted_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "overall_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field"
+          }
+        }
+      }
+    },
+    "field": {
+      "type": "object",
+      "required": [
+        "pointer"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "pointer": {
+          "type": "string",
+          "description": "JSON Pointer (RFC 6901) vers le champ concerné, depuis la racine du document.",
+          "pattern": "^(/[^/]*)+$"
+        },
+        "status": {
+          "enum": [
+            "read",
+            "not_found",
+            "illegible",
+            "inferred"
+          ],
+          "default": "read"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "bbox": {
+          "type": "array",
+          "description": "[x0, y0, x1, y1] normalisés 0..1, origine en haut à gauche de la page.",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "raw": {
+          "type": "string",
+          "description": "Texte lu, avant normalisation."
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": [
+        "status",
+        "checks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ok",
+            "warning",
+            "error"
+          ]
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "rule",
+              "result"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "rule": {
+                "type": "string",
+                "description": "Identifiant de règle : BR-* (EN 16931), BR-FR-* (FR CTC) ou STAIRLING-*."
+              },
+              "result": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "not_applicable"
+                ]
+              },
+              "severity": {
+                "enum": [
+                  "info",
+                  "warning",
+                  "error"
+                ]
+              },
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "stairling_classification": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/extension_object"
+        }
+      ],
+      "description": "Catégorie métier de chaque ligne du bloc invoice, déduite par STAIRLING. Sert au choix des comptes dans les règles comptables. Liste STAIRLING versionnée (section 8.3).",
+      "required": [
+        "list_version",
+        "lines"
+      ],
+      "properties": {
+        "list_version": {
+          "const": "1",
+          "description": "Version de la liste des catégories."
+        },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "line",
+              "category"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "line": {
+                "type": "string",
+                "description": "Identifiant de la ligne (BT-126, invoice.lines[].identifier)."
+              },
+              "category": {
+                "enum": [
+                  "COURSE",
+                  "SUPPLEMENT_COURSE",
+                  "FRAIS_ANNULATION",
+                  "PRIME_PLATEFORME",
+                  "COMMISSION_PLATEFORME",
+                  "CARBURANT",
+                  "RECHARGE_ELECTRIQUE",
+                  "PEAGE",
+                  "STATIONNEMENT",
+                  "LAVAGE",
+                  "ENTRETIEN_REPARATION",
+                  "ASSURANCE",
+                  "LOCATION_VEHICULE",
+                  "TELEPHONE_INTERNET",
+                  "FOURNITURES_CLIENT",
+                  "AUTRE"
+                ],
+                "description": "COURSE : Prix d’une course de transport de personnes ; SUPPLEMENT_COURSE : Supplément refacturé au client : péage, aéroport, bagages ; FRAIS_ANNULATION : Frais d’annulation ou d’attente facturés au client ; PRIME_PLATEFORME : Bonus et incitations versés par la plateforme ; COMMISSION_PLATEFORME : Frais de service ou commission de la plateforme ; CARBURANT : Gazole, essence, GPL ; RECHARGE_ELECTRIQUE : Recharge d’un véhicule électrique ; PEAGE : Péage autoroutier payé par le chauffeur ; STATIONNEMENT : Parking, stationnement ; LAVAGE : Lavage et nettoyage du véhicule ; ENTRETIEN_REPARATION : Entretien, réparation, pneumatiques ; ASSURANCE : Assurance du véhicule ou de l’activité ; LOCATION_VEHICULE : Location ou location longue durée du véhicule ; TELEPHONE_INTERNET : Forfait téléphonique, données mobiles ; FOURNITURES_CLIENT : Eau, confiseries, chargeurs mis à disposition des passagers ; AUTRE : Non classée : revue humaine obligatoire"
+              }
+            }
+          }
+        }
+      }
+    },
+    "invoice_decimal": {
+      "$id": "urn:stairling:ocr-invoice:invoice-decimal:1.0.0",
+      "description": "Corps invoice en decimal : redéfinit le point d’ancrage dynamique 'number' du schéma invoice pour n’accepter que des chaînes décimales. Un entier dans un document sans numeric_encoding, ou en decimal, est refusé (section 4.4).",
+      "$ref": "urn:stairling:ocr-invoice:invoice:1.0.0",
+      "$defs": {
+        "number": {
+          "$dynamicAnchor": "number",
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        }
+      }
+    }
+  }
+}

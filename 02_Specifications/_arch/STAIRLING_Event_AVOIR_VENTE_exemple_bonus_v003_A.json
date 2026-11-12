@@ -1,0 +1,93 @@
+{
+  "seq": 105890,
+  "event_id": "87c09702-1ce1-58bd-a4a0-46a50b10dcb6",
+  "tenant_id": "stairling-union",
+  "stream_id": "ES-0042",
+  "stream_version": 58,
+  "event_type": "AVOIR_VENTE",
+  "schema_version": 3,
+  "occurred_at": "2026-11-09T00:00:00Z",
+  "recorded_at": "2026-11-09T10:02:11Z",
+  "document_id": "e3d7392e-761a-5417-9813-6dd8cf399d8c",
+  "idempotency_key": "stairling-union|928978279|UBER-FR-2026-118310|381",
+  "correlation_id": "1a23c1ea-81c8-5947-9527-a37bcd13418f",
+  "causation_id": null,
+  "actor": "api:uber",
+  "integrity": {
+    "canonicalization": "JCS-RFC8785",
+    "algorithm": "sha256",
+    "chain_scope": "tenant",
+    "payload_hash": "b94d6545e44e1c8d1e3dc7ca80703fcf06efe69b4fe49a979454ff101d46a4e7",
+    "prev_hash": "fdd4db3b01f924af5b791139f31d799d843cb2427645240d79a7f619e768fa8d",
+    "hash": "a737b31de04317ba9f5ff84ddf034277bfc9ca7bdc3dfb9e4a518f2417133d7c"
+  },
+  "payload": {
+    "numeric_encoding": {
+      "representation": "scaled_integer",
+      "scale": 2
+    },
+    "statut": "RECU",
+    "plateforme": "UBER",
+    "number": "UBER-FR-2026-118310",
+    "issue_date": "2026-11-09",
+    "type_code": "381",
+    "currency_code": "EUR",
+    "preceding_invoice_number": "UBER-FR-2026-118204",
+    "preceding_invoice_date": "2026-11-07",
+    "delivery_date": "2026-11-06",
+    "course_ids": [
+      "UBER-8841"
+    ],
+    "rattachement": {
+      "entrepreneur_id": "ES-0042",
+      "person_uuid": "3d9b7f02-5c1e-4a8b-b6e2-91f0c4a7d218",
+      "driver_platform_id": "a7f3c2e1-uber-drv-5521",
+      "link_method": "platform_driver_id"
+    },
+    "principal": {
+      "name": "Flotte Exemple VTC SAS",
+      "siren": "812345678"
+    },
+    "seller": {
+      "name": "STAIRLING UNION",
+      "siren": "928978279",
+      "vat_identifier": "FR10928978279",
+      "address_line1": "5 RUE Pleyel",
+      "post_code": "93200",
+      "city": "Saint-Denis",
+      "country_code": "FR"
+    },
+    "buyer": {
+      "buyer_type": "B2B",
+      "name": "Exemple Conseil SAS",
+      "siren": "123456782",
+      "country_code": "FR"
+    },
+    "lines": [
+      {
+        "line_id": "1",
+        "name": "Annulation bonus quête",
+        "net_amount": 500,
+        "vat_category_code": "O",
+        "vat_rate": 0,
+        "category": "PRIME_PLATEFORME"
+      }
+    ],
+    "vat_break_down": [
+      {
+        "vat_category_code": "O",
+        "vat_rate": 0,
+        "taxable_amount": 500,
+        "tax_amount": 0
+      }
+    ],
+    "totals": {
+      "sum_invoice_lines_amount": 500,
+      "total_without_vat": 500,
+      "total_vat_amount": 0,
+      "total_with_vat": 500,
+      "amount_due_for_payment": 500
+    },
+    "sha256": "069f9e63fc5abb64d97a64658d79a356ea2e28eeecf1e7b3db04972e233a44e7"
+  }
+}

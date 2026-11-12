@@ -1,0 +1,1000 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:stairling:ocr-invoice:invoice:1.0.0",
+  "title": "STAIRLING — Corps invoice (sérialisation en_invoice, modèle EN 16931)",
+  "description": "Champs du bloc invoice produits par STAIRLING. Chaque champ porte son terme EN 16931 : x-en16931 (BT-/BG-), title (nom officiel), x-en16931-type (type de donnée de la norme). Les autres champs de la sérialisation en_invoice restent admis (additionalProperties non restreint). Généré depuis la table de correspondance de la spécification, annexe 13.",
+  "properties": {
+    "number": {
+      "title": "Invoice number",
+      "description": "Numéro de facture",
+      "x-en16931": "BT-1",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "#/$defs/scheme_identifier"
+        }
+      ],
+      "x-en16931-type": "Identifier"
+    },
+    "issue_date": {
+      "title": "Invoice issue date",
+      "description": "Date d’émission",
+      "x-en16931": "BT-2",
+      "$ref": "#/$defs/date",
+      "x-en16931-type": "Date"
+    },
+    "type_code": {
+      "title": "Invoice type code",
+      "description": "Type de document (UNCL 1001)",
+      "x-en16931": "BT-3",
+      "type": [
+        "string",
+        "integer"
+      ],
+      "x-en16931-type": "Code"
+    },
+    "currency_code": {
+      "title": "Invoice currency code",
+      "description": "Devise (ISO 4217)",
+      "x-en16931": "BT-5",
+      "type": [
+        "string",
+        "integer"
+      ],
+      "x-en16931-type": "Code"
+    },
+    "payment_due_date": {
+      "title": "Payment due date",
+      "description": "Date d’échéance",
+      "x-en16931": "BT-9",
+      "$ref": "#/$defs/date",
+      "x-en16931-type": "Date"
+    },
+    "buyer_reference": {
+      "title": "Buyer reference",
+      "description": "Référence acheteur",
+      "x-en16931": "BT-10",
+      "type": "string",
+      "x-en16931-type": "Text"
+    },
+    "purchase_order_reference": {
+      "title": "Purchase order reference",
+      "description": "Référence de bon de commande",
+      "x-en16931": "BT-13",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "#/$defs/scheme_identifier"
+        }
+      ],
+      "x-en16931-type": "Document Reference"
+    },
+    "payment_terms": {
+      "title": "Payment terms",
+      "description": "Conditions de paiement",
+      "x-en16931": "BT-20",
+      "type": "string",
+      "x-en16931-type": "Text"
+    },
+    "notes": {
+      "title": "INVOICE NOTE",
+      "description": "Notes de facture",
+      "x-en16931": "BG-1",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "subject_code": {
+            "title": "Invoice note subject code",
+            "description": "Sujet de la note (UNCL 4451 : PMD, PMT, AAB)",
+            "x-en16931": "BT-21",
+            "type": [
+              "string",
+              "integer"
+            ],
+            "x-en16931-type": "Code"
+          },
+          "note": {
+            "title": "Invoice note",
+            "description": "Texte de la note",
+            "x-en16931": "BT-22",
+            "type": "string",
+            "x-en16931-type": "Text"
+          }
+        },
+        "required": [
+          "note"
+        ]
+      }
+    },
+    "process_control": {
+      "title": "PROCESS CONTROL",
+      "description": "Contrôle du processus",
+      "x-en16931": "BG-2",
+      "type": "object",
+      "properties": {
+        "business_process_type": {
+          "title": "Business process type",
+          "description": "Cadre de facturation (S1, B1, M1…)",
+          "x-en16931": "BT-23",
+          "type": "string",
+          "x-en16931-type": "Text"
+        },
+        "specification_identifier": {
+          "title": "Specification identifier",
+          "description": "Profil de spécification",
+          "x-en16931": "BT-24",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/scheme_identifier"
+            }
+          ],
+          "x-en16931-type": "Identifier"
+        }
+      },
+      "required": [
+        "specification_identifier"
+      ]
+    },
+    "preceding_invoice_references": {
+      "title": "PRECEDING INVOICE REFERENCE",
+      "description": "Facture antérieure",
+      "x-en16931": "BG-3",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "title": "Preceding Invoice reference",
+            "description": "Numéro de la facture antérieure",
+            "x-en16931": "BT-25",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/scheme_identifier"
+              }
+            ],
+            "x-en16931-type": "Document Reference"
+          },
+          "issue_date": {
+            "title": "Preceding Invoice issue date",
+            "description": "Date de la facture antérieure",
+            "x-en16931": "BT-26",
+            "$ref": "#/$defs/date",
+            "x-en16931-type": "Date"
+          }
+        },
+        "required": [
+          "reference"
+        ]
+      }
+    },
+    "seller": {
+      "title": "SELLER",
+      "description": "Vendeur",
+      "x-en16931": "BG-4",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Seller name",
+          "description": "Raison sociale du vendeur",
+          "x-en16931": "BT-27",
+          "type": "string",
+          "x-en16931-type": "Text"
+        },
+        "identifiers": {
+          "title": "Seller identifier",
+          "description": "Identifiants du vendeur (SIRET, schéma 0009 ou 0225)",
+          "x-en16931": "BT-29",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scheme_identifier"
+          },
+          "x-en16931-type": "Identifier[]"
+        },
+        "legal_registration_identifier": {
+          "title": "Seller legal registration identifier",
+          "description": "SIREN du vendeur (schéma 0002)",
+          "x-en16931": "BT-30",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/scheme_identifier"
+            }
+          ],
+          "x-en16931-type": "Identifier"
+        },
+        "vat_identifier": {
+          "title": "Seller VAT identifier",
+          "description": "N° de TVA du vendeur",
+          "x-en16931": "BT-31",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/scheme_identifier"
+            }
+          ],
+          "x-en16931-type": "Identifier"
+        },
+        "electronic_address": {
+          "title": "Seller electronic address",
+          "description": "Adresse électronique de routage",
+          "x-en16931": "BT-34",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/scheme_identifier"
+            }
+          ],
+          "x-en16931-type": "Identifier"
+        },
+        "postal_address": {
+          "title": "SELLER POSTAL ADDRESS",
+          "description": "Adresse postale du vendeur",
+          "x-en16931": "BG-5",
+          "type": "object",
+          "properties": {
+            "address_line1": {
+              "title": "Seller address line 1",
+              "description": "Ligne d’adresse 1",
+              "x-en16931": "BT-35",
+              "type": "string",
+              "x-en16931-type": "Text"
+            },
+            "city": {
+              "title": "Seller city",
+              "description": "Ville",
+              "x-en16931": "BT-37",
+              "type": "string",
+              "x-en16931-type": "Text"
+            },
+            "post_code": {
+              "title": "Seller post code",
+              "description": "Code postal",
+              "x-en16931": "BT-38",
+              "type": "string",
+              "x-en16931-type": "Text"
+            },
+            "country_code": {
+              "title": "Seller country code",
+              "description": "Pays (ISO 3166-1 alpha-2)",
+              "x-en16931": "BT-40",
+              "type": [
+                "string",
+                "integer"
+              ],
+              "x-en16931-type": "Code"
+            }
+          },
+          "required": [
+            "country_code"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "postal_address"
+      ]
+    },
+    "buyer": {
+      "title": "BUYER",
+      "description": "Acheteur",
+      "x-en16931": "BG-7",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Buyer name",
+          "description": "Raison sociale de l’acheteur",
+          "x-en16931": "BT-44",
+          "type": "string",
+          "x-en16931-type": "Text"
+        },
+        "identifiers": {
+          "title": "Buyer identifier",
+          "description": "Identifiants de l’acheteur",
+          "x-en16931": "BT-46",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scheme_identifier"
+          },
+          "x-en16931-type": "Identifier[]"
+        },
+        "legal_registration_identifier": {
+          "title": "Buyer legal registration identifier",
+          "description": "SIREN de l’acheteur",
+          "x-en16931": "BT-47",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/scheme_identifier"
+            }
+          ],
+          "x-en16931-type": "Identifier"
+        },
+        "vat_identifier": {
+          "title": "Buyer VAT identifier",
+          "description": "N° de TVA de l’acheteur",
+          "x-en16931": "BT-48",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/scheme_identifier"
+            }
+          ],
+          "x-en16931-type": "Identifier"
+        },
+        "electronic_address": {
+          "title": "Buyer electronic address",
+          "description": "Adresse électronique de l’acheteur",
+          "x-en16931": "BT-49",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/scheme_identifier"
+            }
+          ],
+          "x-en16931-type": "Identifier"
+        },
+        "postal_address": {
+          "title": "BUYER POSTAL ADDRESS",
+          "description": "Adresse postale de l’acheteur",
+          "x-en16931": "BG-8",
+          "type": "object",
+          "properties": {
+            "address_line1": {
+              "title": "Buyer address line 1",
+              "description": "Ligne d’adresse 1",
+              "x-en16931": "BT-50",
+              "type": "string",
+              "x-en16931-type": "Text"
+            },
+            "city": {
+              "title": "Buyer city",
+              "description": "Ville",
+              "x-en16931": "BT-52",
+              "type": "string",
+              "x-en16931-type": "Text"
+            },
+            "post_code": {
+              "title": "Buyer post code",
+              "description": "Code postal",
+              "x-en16931": "BT-53",
+              "type": "string",
+              "x-en16931-type": "Text"
+            },
+            "country_code": {
+              "title": "Buyer country code",
+              "description": "Pays (ISO 3166-1 alpha-2)",
+              "x-en16931": "BT-55",
+              "type": [
+                "string",
+                "integer"
+              ],
+              "x-en16931-type": "Code"
+            }
+          },
+          "required": [
+            "country_code"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "postal_address"
+      ]
+    },
+    "payer": {
+      "title": "Payer (extension française)",
+      "description": "Payeur distinct de l’acheteur ; groupe EXT-FR-FE-BG-01 à 05, numéro exact à confirmer",
+      "x-en16931": "EXT-FR-FE",
+      "type": "object",
+      "properties": {}
+    },
+    "third_party_biller": {
+      "title": "Third party biller (extension française)",
+      "description": "Tiers facturant ; groupe EXT-FR-FE-BG-01 à 05, numéro exact à confirmer",
+      "x-en16931": "EXT-FR-FE",
+      "type": "object",
+      "properties": {}
+    },
+    "invoicing_period": {
+      "title": "INVOICING PERIOD",
+      "description": "Période de facturation",
+      "x-en16931": "BG-14",
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "title": "Invoicing period start date",
+          "description": "Début de période",
+          "x-en16931": "BT-73",
+          "$ref": "#/$defs/date",
+          "x-en16931-type": "Date"
+        },
+        "end_date": {
+          "title": "Invoicing period end date",
+          "description": "Fin de période",
+          "x-en16931": "BT-74",
+          "$ref": "#/$defs/date",
+          "x-en16931-type": "Date"
+        }
+      }
+    },
+    "payment_instructions": {
+      "title": "PAYMENT INSTRUCTIONS",
+      "description": "Instructions de paiement",
+      "x-en16931": "BG-16",
+      "type": "object",
+      "properties": {
+        "payment_means_type_code": {
+          "title": "Payment means type code",
+          "description": "Moyen de paiement (UNCL 4461)",
+          "x-en16931": "BT-81",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "x-en16931-type": "Code"
+        },
+        "credit_transfers": {
+          "title": "CREDIT TRANSFER",
+          "description": "Virement",
+          "x-en16931": "BG-17",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "payment_account_identifier": {
+                "title": "Payment account identifier",
+                "description": "IBAN",
+                "x-en16931": "BT-84",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "$ref": "#/$defs/scheme_identifier"
+                  }
+                ],
+                "x-en16931-type": "Identifier"
+              }
+            },
+            "required": [
+              "payment_account_identifier"
+            ]
+          }
+        }
+      },
+      "required": [
+        "payment_means_type_code"
+      ]
+    },
+    "document_level_allowances": {
+      "title": "DOCUMENT LEVEL ALLOWANCES",
+      "description": "Remises au niveau du document",
+      "x-en16931": "BG-20",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "title": "Document level allowance amount",
+            "description": "Montant de la remise",
+            "x-en16931": "BT-92",
+            "$ref": "#/$defs/amount",
+            "x-en16931-type": "Amount"
+          },
+          "base_amount": {
+            "title": "Document level allowance base amount",
+            "description": "Assiette",
+            "x-en16931": "BT-93",
+            "$ref": "#/$defs/amount",
+            "x-en16931-type": "Amount"
+          },
+          "percent": {
+            "title": "Document level allowance percentage",
+            "description": "Pourcentage",
+            "x-en16931": "BT-94",
+            "$ref": "#/$defs/percentage",
+            "x-en16931-type": "Percentage"
+          },
+          "vat_category_code": {
+            "title": "Document level allowance VAT category code",
+            "description": "Catégorie de TVA (UNCL 5305)",
+            "x-en16931": "BT-95",
+            "type": [
+              "string",
+              "integer"
+            ],
+            "x-en16931-type": "Code"
+          },
+          "vat_rate": {
+            "title": "Document level allowance VAT rate",
+            "description": "Taux de TVA",
+            "x-en16931": "BT-96",
+            "$ref": "#/$defs/percentage",
+            "x-en16931-type": "Percentage"
+          },
+          "reason": {
+            "title": "Document level allowance reason",
+            "description": "Motif",
+            "x-en16931": "BT-97",
+            "type": "string",
+            "x-en16931-type": "Text"
+          },
+          "reason_code": {
+            "title": "Document level allowance reason code",
+            "description": "Code motif (UNCL 5189)",
+            "x-en16931": "BT-98",
+            "type": [
+              "string",
+              "integer"
+            ],
+            "x-en16931-type": "Code"
+          }
+        },
+        "required": [
+          "amount",
+          "vat_category_code"
+        ]
+      }
+    },
+    "charges": {
+      "title": "DOCUMENT LEVEL CHARGES",
+      "description": "Frais au niveau du document",
+      "x-en16931": "BG-21",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "title": "Document level charge amount",
+            "description": "Montant des frais",
+            "x-en16931": "BT-99",
+            "$ref": "#/$defs/amount",
+            "x-en16931-type": "Amount"
+          },
+          "base_amount": {
+            "title": "Document level charge base amount",
+            "description": "Assiette",
+            "x-en16931": "BT-100",
+            "$ref": "#/$defs/amount",
+            "x-en16931-type": "Amount"
+          },
+          "percent": {
+            "title": "Document level charge percentage",
+            "description": "Pourcentage",
+            "x-en16931": "BT-101",
+            "$ref": "#/$defs/percentage",
+            "x-en16931-type": "Percentage"
+          },
+          "vat_category_code": {
+            "title": "Document level charge VAT category code",
+            "description": "Catégorie de TVA (UNCL 5305)",
+            "x-en16931": "BT-102",
+            "type": [
+              "string",
+              "integer"
+            ],
+            "x-en16931-type": "Code"
+          },
+          "vat_rate": {
+            "title": "Document level charge VAT rate",
+            "description": "Taux de TVA",
+            "x-en16931": "BT-103",
+            "$ref": "#/$defs/percentage",
+            "x-en16931-type": "Percentage"
+          },
+          "reason": {
+            "title": "Document level charge reason",
+            "description": "Motif",
+            "x-en16931": "BT-104",
+            "type": "string",
+            "x-en16931-type": "Text"
+          },
+          "reason_code": {
+            "title": "Document level charge reason code",
+            "description": "Code motif (UNCL 7161)",
+            "x-en16931": "BT-105",
+            "type": [
+              "string",
+              "integer"
+            ],
+            "x-en16931-type": "Code"
+          }
+        },
+        "required": [
+          "amount",
+          "vat_category_code"
+        ]
+      }
+    },
+    "totals": {
+      "title": "DOCUMENT TOTALS",
+      "description": "Totaux du document",
+      "x-en16931": "BG-22",
+      "type": "object",
+      "properties": {
+        "sum_invoice_lines_amount": {
+          "title": "Sum of Invoice line net amount",
+          "description": "Somme des montants nets des lignes",
+          "x-en16931": "BT-106",
+          "$ref": "#/$defs/amount",
+          "x-en16931-type": "Amount"
+        },
+        "sum_allowances_amount": {
+          "title": "Sum of allowances on document level",
+          "description": "Somme des remises",
+          "x-en16931": "BT-107",
+          "$ref": "#/$defs/amount",
+          "x-en16931-type": "Amount"
+        },
+        "sum_charges_amount": {
+          "title": "Sum of charges on document level",
+          "description": "Somme des frais",
+          "x-en16931": "BT-108",
+          "$ref": "#/$defs/amount",
+          "x-en16931-type": "Amount"
+        },
+        "total_without_vat": {
+          "title": "Invoice total amount without VAT",
+          "description": "Total HT",
+          "x-en16931": "BT-109",
+          "$ref": "#/$defs/amount",
+          "x-en16931-type": "Amount"
+        },
+        "total_vat_amount": {
+          "title": "Invoice total VAT amount",
+          "description": "Total TVA, avec sa devise",
+          "x-en16931": "BT-110",
+          "$ref": "#/$defs/amount_with_currency"
+        },
+        "total_with_vat": {
+          "title": "Invoice total amount with VAT",
+          "description": "Total TTC",
+          "x-en16931": "BT-112",
+          "$ref": "#/$defs/amount",
+          "x-en16931-type": "Amount"
+        },
+        "paid_amount": {
+          "title": "Paid amount",
+          "description": "Montant déjà payé",
+          "x-en16931": "BT-113",
+          "$ref": "#/$defs/amount",
+          "x-en16931-type": "Amount"
+        },
+        "rounding_amount": {
+          "title": "Rounding amount",
+          "description": "Arrondi",
+          "x-en16931": "BT-114",
+          "$ref": "#/$defs/amount",
+          "x-en16931-type": "Amount"
+        },
+        "amount_due_for_payment": {
+          "title": "Amount due for payment",
+          "description": "Reste à payer",
+          "x-en16931": "BT-115",
+          "$ref": "#/$defs/amount",
+          "x-en16931-type": "Amount"
+        }
+      },
+      "required": [
+        "sum_invoice_lines_amount",
+        "total_without_vat",
+        "total_with_vat",
+        "amount_due_for_payment"
+      ]
+    },
+    "vat_break_down": {
+      "title": "VAT BREAKDOWN",
+      "description": "Récapitulatif de TVA",
+      "x-en16931": "BG-23",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "vat_category_taxable_amount": {
+            "title": "VAT category taxable amount",
+            "description": "Base imposable",
+            "x-en16931": "BT-116",
+            "$ref": "#/$defs/amount",
+            "x-en16931-type": "Amount"
+          },
+          "vat_category_tax_amount": {
+            "title": "VAT category tax amount",
+            "description": "Montant de TVA",
+            "x-en16931": "BT-117",
+            "$ref": "#/$defs/amount",
+            "x-en16931-type": "Amount"
+          },
+          "vat_category_code": {
+            "title": "VAT category code",
+            "description": "Catégorie de TVA (UNCL 5305)",
+            "x-en16931": "BT-118",
+            "type": [
+              "string",
+              "integer"
+            ],
+            "x-en16931-type": "Code"
+          },
+          "vat_category_rate": {
+            "title": "VAT category rate",
+            "description": "Taux de TVA",
+            "x-en16931": "BT-119",
+            "$ref": "#/$defs/percentage",
+            "x-en16931-type": "Percentage"
+          },
+          "vat_exemption_reason": {
+            "title": "VAT exemption reason text",
+            "description": "Motif d’exonération (texte)",
+            "x-en16931": "BT-120",
+            "type": "string",
+            "x-en16931-type": "Text"
+          },
+          "vat_exemption_reason_code": {
+            "title": "VAT exemption reason code",
+            "description": "Motif d’exonération (VATEX)",
+            "x-en16931": "BT-121",
+            "type": [
+              "string",
+              "integer"
+            ],
+            "x-en16931-type": "Code"
+          }
+        },
+        "required": [
+          "vat_category_taxable_amount",
+          "vat_category_tax_amount",
+          "vat_category_code"
+        ]
+      }
+    },
+    "lines": {
+      "title": "INVOICE LINE",
+      "description": "Lignes de facture",
+      "x-en16931": "BG-25",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "title": "Invoice line identifier",
+            "description": "Numéro de ligne",
+            "x-en16931": "BT-126",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/scheme_identifier"
+              }
+            ],
+            "x-en16931-type": "Identifier"
+          },
+          "invoiced_quantity": {
+            "title": "Invoiced quantity",
+            "description": "Quantité facturée",
+            "x-en16931": "BT-129",
+            "$ref": "#/$defs/quantity",
+            "x-en16931-type": "Quantity"
+          },
+          "invoiced_quantity_code": {
+            "title": "Invoiced quantity unit of measure code",
+            "description": "Unité (UN/ECE Rec. 20)",
+            "x-en16931": "BT-130",
+            "type": [
+              "string",
+              "integer"
+            ],
+            "x-en16931-type": "Code"
+          },
+          "net_amount": {
+            "title": "Invoice line net amount",
+            "description": "Montant net de la ligne",
+            "x-en16931": "BT-131",
+            "$ref": "#/$defs/amount",
+            "x-en16931-type": "Amount"
+          },
+          "price_details": {
+            "title": "PRICE DETAILS",
+            "description": "Détail du prix",
+            "x-en16931": "BG-29",
+            "type": "object",
+            "properties": {
+              "item_net_price": {
+                "title": "Item net price",
+                "description": "Prix unitaire net",
+                "x-en16931": "BT-146",
+                "$ref": "#/$defs/unit_price_amount",
+                "x-en16931-type": "Unit Price Amount"
+              }
+            },
+            "required": [
+              "item_net_price"
+            ]
+          },
+          "vat_information": {
+            "title": "LINE VAT INFORMATION",
+            "description": "TVA de la ligne",
+            "x-en16931": "BG-30",
+            "type": "object",
+            "properties": {
+              "invoiced_item_vat_category_code": {
+                "title": "Invoiced item VAT category code",
+                "description": "Catégorie de TVA (UNCL 5305)",
+                "x-en16931": "BT-151",
+                "type": [
+                  "string",
+                  "integer"
+                ],
+                "x-en16931-type": "Code"
+              },
+              "invoiced_item_vat_rate": {
+                "title": "Invoiced item VAT rate",
+                "description": "Taux de TVA",
+                "x-en16931": "BT-152",
+                "$ref": "#/$defs/percentage",
+                "x-en16931-type": "Percentage"
+              }
+            },
+            "required": [
+              "invoiced_item_vat_category_code"
+            ]
+          },
+          "item_information": {
+            "title": "ITEM INFORMATION",
+            "description": "Article",
+            "x-en16931": "BG-31",
+            "type": "object",
+            "properties": {
+              "name": {
+                "title": "Item name",
+                "description": "Désignation",
+                "x-en16931": "BT-153",
+                "type": "string",
+                "x-en16931-type": "Text"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        },
+        "required": [
+          "identifier",
+          "invoiced_quantity",
+          "invoiced_quantity_code",
+          "net_amount",
+          "price_details",
+          "vat_information",
+          "item_information"
+        ]
+      }
+    }
+  },
+  "required": [
+    "number",
+    "issue_date",
+    "type_code",
+    "currency_code",
+    "process_control",
+    "seller",
+    "buyer",
+    "totals",
+    "vat_break_down",
+    "lines"
+  ],
+  "type": "object",
+  "$defs": {
+    "amount": {
+      "description": "EN 16931 Amount. Entier à l’échelle 2 (valeur × 100) si numeric_encoding le déclare, chaîne décimale sinon ; une chaîne reste admise en scaled_integer pour une valeur plus précise que deux décimales.",
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        }
+      ]
+    },
+    "unit_price_amount": {
+      "description": "EN 16931 Unit Price Amount. Entier à l’échelle 2 (valeur × 100) si numeric_encoding le déclare, chaîne décimale sinon ; une chaîne reste admise en scaled_integer pour une valeur plus précise que deux décimales.",
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        }
+      ]
+    },
+    "percentage": {
+      "description": "EN 16931 Percentage (1000 = 10,00 % à l’échelle 2). Entier à l’échelle 2 (valeur × 100) si numeric_encoding le déclare, chaîne décimale sinon ; une chaîne reste admise en scaled_integer pour une valeur plus précise que deux décimales.",
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        }
+      ]
+    },
+    "quantity": {
+      "description": "EN 16931 Quantity (100 = 1 à l’échelle 2). Entier à l’échelle 2 (valeur × 100) si numeric_encoding le déclare, chaîne décimale sinon ; une chaîne reste admise en scaled_integer pour une valeur plus précise que deux décimales.",
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        }
+      ]
+    },
+    "amount_with_currency": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/amount"
+        },
+        "currency_code": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      }
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "scheme_identifier": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "description": "Schéma ISO 6523 ICD (0002 SIREN, 0009 SIRET, 0225 annuaire FR)"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "seq": 105210,
+  "event_id": "d71e…",
+  "stream_id": "ES-0042",
+  "stream_version": 56,
+  "event_type": "ECRITURE_COMPTABILISEE",
+  "schema_version": 1,
+  "occurred_at": "2026-11-07T00:00:00Z",
+  "recorded_at": "2026-11-08T05:00:00Z",
+  "document_id": null,
+  "causation_id": null,
+  "actor": "comptabilisation",
+  "payload": {
+    "numeric_encoding": { "representation": "scaled_integer", "scale": 2 },
+    "nature": "FACTURE",
+    "journal": "VT-UBER",
+    "ecriture_num": "VT-UBER-2026-000418",
+    "ecriture_date": "2026-11-07",
+    "piece_ref": "VT-UBER-2026-11-07-ES-0042",
+    "imputation_version": 1,
+    "factures": [
+      { "document_id": "7c1d…", "number": "UBER-FR-2026-118204", "total_with_vat": 3990 },
+      { "document_id": "8e2a…", "number": "UBER-FR-2026-118230", "total_with_vat": 2200 }
+    ],
+    "lignes": [
+      { "compte": "411UBER", "debit": 6190, "credit": 0 },
+      { "compte": "706 Uber transport 10 %", "analytique": "ES-0042", "debit": 0, "credit": 4700 },
+      { "compte": "706 Uber frais annexes 20 %", "analytique": "ES-0042", "debit": 0, "credit": 600 },
+      { "compte": "pourboires", "analytique": "ES-0042", "debit": 0, "credit": 300 },
+      { "compte": "445711", "debit": 0, "credit": 470 },
+      { "compte": "445712", "debit": 0, "credit": 120 }
+    ]
+  }
+}
